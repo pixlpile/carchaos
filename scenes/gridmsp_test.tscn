@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d25ah3o2ijyu2"]
+
+[ext_resource type="MeshLibrary" uid="uid://crh6ckr8hijvy" path="res://meshes/library_roads.tres" id="1_fdum5"]
+
+[node name="GridTest" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_fdum5")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+bake_navigation = true
+data = {
+"cells": PackedInt32Array(0, 0, 0, 65535, 0, 655360, 65534, 0, 655360, 1, 0, 655360)
+}
