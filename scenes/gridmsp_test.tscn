@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d25ah3o2ijyu2"]
 
-[ext_resource type="MeshLibrary" uid="uid://crh6ckr8hijvy" path="res://meshes/library_roads.tres" id="1_fdum5"]
+[ext_resource type="MeshLibrary" uid="uid://edivfulhihge" path="res://meshes/library_roads.tres" id="1_fdum5"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="2_ykbg1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5i27q"]
