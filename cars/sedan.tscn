@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ciypoloc1a8n1"]
+
+[ext_resource type="PackedScene" uid="uid://cepqc3bjs83os" path="res://kenney_assets/kenney_car-kit/Models/GLB format/sedan.glb" id="1_f1w0m"]
+[ext_resource type="Script" path="res://scripts/vehicle.gd" id="2_xf1pq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tqp6y"]
+friction = 0.1
+rough = true
+bounce = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_58m01"]
+size = Vector3(0.45, 0.5, 0.85)
+
+[node name="Sedan" instance=ExtResource("1_f1w0m")]
+physics_material_override = SubResource("PhysicsMaterial_tqp6y")
+script = ExtResource("2_xf1pq")
+speed = 100.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249867, 0)
+shape = SubResource("BoxShape3D_58m01")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="6"]
+debug_enabled = true
