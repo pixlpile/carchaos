@@ -1,8 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://d25ah3o2ijyu2"]
+[gd_scene load_steps=6 format=3 uid="uid://d25ah3o2ijyu2"]
 
 [ext_resource type="MeshLibrary" uid="uid://crh6ckr8hijvy" path="res://meshes/library_roads.tres" id="1_fdum5"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="2_ykbg1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5i27q"]
+sky_top_color = Color(0.25098, 0.333333, 0.894118, 1)
+sky_horizon_color = Color(0.64902, 0.648039, 0.74902, 1)
+ground_bottom_color = Color(0.345098, 0.258824, 0.101961, 1)
+ground_horizon_color = Color(0.64902, 0.648039, 0.74902, 1)
+
+[sub_resource type="Sky" id="Sky_fy7k0"]
+sky_material = SubResource("ProceduralSkyMaterial_5i27q")
+
+[sub_resource type="Environment" id="Environment_skagt"]
+background_mode = 2
+sky = SubResource("Sky_fy7k0")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="GridTest" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_skagt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_fdum5")
@@ -10,5 +33,13 @@ cell_size = Vector3(1, 1, 1)
 cell_center_y = false
 bake_navigation = true
 data = {
-"cells": PackedInt32Array(0, 0, 0, 65535, 0, 655360, 65534, 0, 655360, 1, 0, 655360)
+"cells": PackedInt32Array(1, 2, 655361, 2, 2, 655361, 2, 0, 655361, 1, 0, 655361, 1, 1, 655361, 2, 1, 655361, 65534, 2, 655361, 65534, 1, 655361, 65534, 0, 655361, 65533, 0, 655361, 65533, 1, 655361, 65533, 2, 655361, 3, 0, 655361, 3, 1, 655361, 3, 2, 655361, 4, 2, 655361, 4, 1, 655361, 4, 0, 655361, 65534, 65534, 655361, 65534, 65533, 655361, 65533, 65533, 655361, 65533, 65534, 655361, 1, 65534, 655361, 2, 65534, 655361, 3, 65534, 655361, 4, 65533, 655361, 4, 65534, 655361, 3, 65533, 655361, 2, 65533, 655361, 1, 65533, 655361, 4, 65535, 655361, 3, 65535, 655361, 2, 65535, 655361, 1, 65535, 655361, 0, 65535, 655361, 65535, 65535, 655361, 65534, 65535, 655361, 65533, 65535, 655361, 65535, 65533, 655361, 65535, 65534, 655361, 65535, 0, 655361, 65535, 1, 655361, 65535, 2, 655361, 0, 2, 655361, 0, 1, 655361, 0, 0, 655361, 0, 65534, 655361, 0, 65533, 655361)
 }
+
+[node name="player" type="Node3D" parent="."]
+script = ExtResource("2_ykbg1")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0.708586, 8.00156, 2.09495)
+projection = 1
+size = 18.277

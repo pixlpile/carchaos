@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvkq2r2t7xvpm"]
+
+[ext_resource type="ArrayMesh" uid="uid://bhnyytgq746ie" path="res://meshes/road_straight.res" id="1_yyfmr"]
+[ext_resource type="ArrayMesh" uid="uid://dn5s4v3fp0t3m" path="res://meshes/road_default.res" id="2_j3qtv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ikf40"]
+margin = 0.0
+size = Vector3(1, 0.02, 0.795)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_4wiav"]
+geometry_parsed_geometry_type = 1
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hvjxg"]
+points = PackedVector3Array(0.463119, 0.25, 0.463119, -0.478058, 0, -0.478058, -0.478058, 0, 0.478058, 0.478058, 0, -0.478058, -0.463119, 0.25, -0.463119, 0.478058, 0, 0.478058, -0.463119, 0.25, 0.463119, 0.463119, 0.25, -0.463119)
+
+[node name="Meshlibrary" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_yyfmr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_ikf40")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="MeshInstance3D"]
+navigation_mesh = SubResource("NavigationMesh_4wiav")
+
+[node name="default" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.22292)
+mesh = ExtResource("2_j3qtv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="default"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="default/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_hvjxg")
