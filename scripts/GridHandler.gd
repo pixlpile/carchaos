@@ -16,3 +16,6 @@ func is_editable(placement:Vector3i):
 	if placement in illegal_cells:
 		return false
 	return true
+	
+func get_tile_id(placement:Vector3i):
+	return get_cell_item(placement)

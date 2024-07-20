@@ -1,8 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0r67xw1qypr4"]
+[gd_scene load_steps=12 format=3 uid="uid://b0r67xw1qypr4"]
 
-[ext_resource type="Script" path="res://scenes/GridHandler.gd" id="1_78tj7"]
+[ext_resource type="Script" path="res://scripts/GridHandler.gd" id="1_78tj7"]
 [ext_resource type="MeshLibrary" uid="uid://edivfulhihge" path="res://meshes/library_roads.tres" id="1_87dhb"]
-[ext_resource type="Script" path="res://scenes/player.gd" id="2_msobk"]
+[ext_resource type="Script" path="res://scripts/stage.gd" id="1_r3wyl"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_msobk"]
+[ext_resource type="Resource" uid="uid://b2kwwl5dwn5ug" path="res://resources/tiles/default.tres" id="2_unliq"]
+[ext_resource type="Resource" uid="uid://b8mr36t8w4gtv" path="res://resources/tiles/straight_road_tile.tres" id="3_mniv1"]
+[ext_resource type="Texture2D" uid="uid://bn2wfyeaqiteh" path="res://kenney_assets/kenney_isometric-roads/png/road.png" id="7_0r66u"]
+[ext_resource type="Texture2D" uid="uid://bybxtk57xxqxw" path="res://kenney_assets/kenney_isometric-roads/png/roadEW.png" id="8_br2pf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_63c6i"]
 sky_top_color = Color(0.25098, 0.333333, 0.894118, 1)
@@ -20,6 +25,8 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Stage1" type="Node3D"]
+script = ExtResource("1_r3wyl")
+available_tiles = Array[Resource("res://scripts/tile.gd")]([ExtResource("2_unliq"), ExtResource("3_mniv1")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rw2fi")
@@ -44,3 +51,27 @@ script = ExtResource("2_msobk")
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0.708586, 8.00156, 2.09495)
 projection = 1
 size = 18.277
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="HFlowContainer" type="HFlowContainer" parent="CanvasGroup"]
+offset_left = 22.0
+offset_top = 566.0
+offset_right = 1127.0
+offset_bottom = 649.0
+
+[node name="Button" type="Button" parent="CanvasGroup/HFlowContainer"]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("7_0r66u")
+
+[node name="Button2" type="Button" parent="CanvasGroup/HFlowContainer"]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+icon = ExtResource("8_br2pf")
+
+[connection signal="pressed" from="CanvasGroup/HFlowContainer/Button" to="." method="set_active_tile" binds= [0]]
+[connection signal="pressed" from="CanvasGroup/HFlowContainer/Button2" to="." method="set_active_tile" binds= [1]]

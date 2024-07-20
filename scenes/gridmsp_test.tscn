@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d25ah3o2ijyu2"]
 
 [ext_resource type="MeshLibrary" uid="uid://edivfulhihge" path="res://meshes/library_roads.tres" id="1_fdum5"]
-[ext_resource type="Script" path="res://scenes/player.gd" id="2_ykbg1"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_ykbg1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5i27q"]
 sky_top_color = Color(0.25098, 0.333333, 0.894118, 1)

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TileAttributes" load_steps=2 format=3 uid="uid://b8mr36t8w4gtv"]
+
+[ext_resource type="Script" path="res://scripts/tile.gd" id="1_uydo8"]
+
+[resource]
+script = ExtResource("1_uydo8")
+id = 0
+cost = 300

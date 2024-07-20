@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var grid = $"../GridMap"
 @onready var camera3d = $Camera3D
+@onready var current_stage = $".."
 
 @export var money: int = 1000
 
@@ -12,14 +13,13 @@ func _unhandled_input(_event):
 	if Input.is_action_just_pressed("place_tile"):
 		var grid_local = get_grid_placement()
 		if grid_local and grid.is_editable(grid_local):
-			if buy_tile(300):
-				grid.set_cell_item(grid_local, 0)
-	
-	if Input.is_action_just_pressed("remove_tile"):
-		var grid_local = get_grid_placement()
-		if grid_local and grid.is_editable(grid_local):
-			if buy_tile(-300):
-				grid.set_cell_item(grid_local, 1)
+			var current_tile_id = grid.get_tile_id(grid_local)
+			var current_tile_cost = current_stage.get_tile_cost_by_id(current_tile_id)
+			if buy_tile(current_tile_cost):
+				var id = current_stage.get_tile_id()
+				grid.set_cell_item(grid_local, id)
+				print("money: " + str(money))
+
 
 func get_grid_placement():
 	var mouse_pos = get_viewport().get_mouse_position() 
@@ -39,9 +39,10 @@ func get_grid_placement():
 		return grid_local
 	return false
 
-func buy_tile(cost):
-	if money > cost:
-		money += -cost
+func buy_tile(current_tile_cost):
+	var cost = current_stage.get_cost()
+	if money + current_tile_cost > cost:
+		money += current_tile_cost-cost
 		return true
 	else: 
 		return false
