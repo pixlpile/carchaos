@@ -4,6 +4,11 @@
 [ext_resource type="Script" path="res://scripts/vehicle.gd" id="2_xf1pq"]
 [ext_resource type="PackedScene" uid="uid://bs7v1e6ebk7st" path="res://kenney_assets/kenney_car-kit/Models/GLB format/debris-drivetrain.glb" id="3_sy7kp"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tqp6y"]
+friction = 0.1
+rough = true
+bounce = 0.1
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_58m01"]
 size = Vector3(0.45, 0.5, 0.85)
 

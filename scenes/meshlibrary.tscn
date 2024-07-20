@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dvkq2r2t7xvpm"]
 
-[ext_resource type="ArrayMesh" uid="uid://bhnyytgq746ie" path="res://meshes/road_straight.res" id="1_t8ap0"]
+[ext_resource type="ArrayMesh" path="res://meshes/road_straight.res" id="1_t8ap0"]
 [ext_resource type="ArrayMesh" uid="uid://dn5s4v3fp0t3m" path="res://meshes/road_default.res" id="2_g7q4x"]
 [ext_resource type="ArrayMesh" uid="uid://ds5c6ikkkeoeh" path="res://meshes/red_start.res" id="3_vx2gk"]
 [ext_resource type="ArrayMesh" uid="uid://b0uiqh5tvamla" path="res://meshes/red_end.res" id="4_l2yku"]

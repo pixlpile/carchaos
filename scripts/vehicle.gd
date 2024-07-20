@@ -4,13 +4,12 @@ extends RigidBody3D
 @onready var navigation: NavigationAgent3D = $NavigationAgent3D
 @export var speed = 1.0
 @export var inverse_rotation: bool = true
-@export var target: Node3D
 @export var explosion : PackedScene
 var target: Vector3
 var current_waypoint: Vector3
 var direction: Vector3
 var skip = true
-var set_target = true
+var have_set_target = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,9 +25,9 @@ func _physics_process(delta):
 	if skip:
 		skip = false
 		return
-	if set_target:
-		navigation.target_position = target.position
-		set_target = false
+	if have_set_target:
+		navigation.target_position = target
+		have_set_target = false
 		return
 		
 	if navigation.is_target_reachable() && not navigation.is_navigation_finished():
