@@ -26,6 +26,7 @@ func _physics_process(delta):
 		skip = false
 		return
 	if have_set_target:
+		print(target)
 		navigation.target_position = target
 		have_set_target = false
 		return

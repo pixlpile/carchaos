@@ -41,6 +41,7 @@ shadow_enabled = true
 mesh_library = ExtResource("1_87dhb")
 cell_size = Vector3(1, 1, 1)
 cell_center_y = false
+bake_navigation = true
 data = {
 "cells": PackedInt32Array(65534, 65534, 1, 65535, 65534, 1, 0, 65534, 1, 1, 65534, 1, 2, 65534, 1, 1, 65535, 1, 0, 65535, 0, 65535, 65535, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 2, 65535, 3, 65534, 65535, 655362)
 }
@@ -85,7 +86,7 @@ theme_override_font_sizes/font_size = 32
 text = "Start"
 
 [node name="red_spawner" type="Node3D" parent="." node_paths=PackedStringArray("end_point")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27877, 0, -0.5)
 script = ExtResource("10_o3wgt")
 obj_path = ExtResource("10_f2kik")
 end_point = NodePath("../red_end")

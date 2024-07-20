@@ -89,7 +89,7 @@ shape = SubResource("BoxShape3D_me48w")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2, 7, 0)
 
-[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("end_point")]
+[node name="Spawner" type="Node3D" parent="." node_paths=PackedStringArray("end_point")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.9029)
 script = ExtResource("2_waa2m")
 obj_path = ExtResource("1_aacoc")
@@ -99,4 +99,4 @@ end_point = NodePath("../Target")
 one_shot = true
 autostart = true
 
-[connection signal="timeout" from="Timer" to="Node3D" method="start_simulation"]
+[connection signal="timeout" from="Timer" to="Spawner" method="start_simulation"]
