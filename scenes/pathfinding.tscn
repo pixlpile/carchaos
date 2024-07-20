@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://fujhe6auja73"]
+
+[ext_resource type="PackedScene" uid="uid://ciypoloc1a8n1" path="res://cars/sedan.tscn" id="1_aacoc"]
+[ext_resource type="Material" uid="uid://cmxpaip16ufed" path="res://scenes/box_material.tres" id="1_x6q64"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6qmpf"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_tq0av"]
+sky_material = SubResource("ProceduralSkyMaterial_6qmpf")
+
+[sub_resource type="Environment" id="Environment_aphti"]
+background_mode = 2
+sky = SubResource("Sky_tq0av")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_y1x43"]
+vertices = PackedVector3Array(0.13448, 0.2, -0.000432104, -0.0655193, 0.2, -0.000432104, -0.0655193, 0.2, 2.69957, 0.13448, 0.2, 3.19957, -3.86552, 0.2, 3.49957, -3.56552, 0.2, 3.19957, -4.06552, 0.2, 2.99957, 0.13448, 0.2, 3.19957, -0.0655193, 0.2, 2.69957, -0.36552, 0.2, 2.99957, -3.56552, 0.2, 3.19957, 0.13448, 0.2, 3.19957, -0.36552, 0.2, 2.99957, -4.06552, 0.2, 2.99957, -4.06552, 0.2, 7.19957, -3.86552, 0.2, 7.19957, -3.86552, 0.2, 3.49957, -4.06552, 0.2, 2.99957)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(9, 8, 7), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17)]
+cell_size = 0.1
+cell_height = 0.1
+agent_height = 1.0
+agent_radius = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_06hqu"]
+size = Vector3(1, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6eta"]
+size = Vector3(1, 1, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h22sx"]
+size = Vector3(4, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_me48w"]
+size = Vector3(4, 1, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aphti")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Target" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.96552, 0.5, -3.09957)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.96552, 0.5, -3.09957)
+navigation_mesh = SubResource("NavigationMesh_y1x43")
+
+[node name="Box" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 5.5)
+
+[node name="Mesh" type="MeshInstance3D" parent="NavigationRegion3D/Box"]
+mesh = SubResource("BoxMesh_06hqu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("1_x6q64")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Box"]
+shape = SubResource("BoxShape3D_e6eta")
+
+[node name="Box3" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 1.5)
+
+[node name="Mesh" type="MeshInstance3D" parent="NavigationRegion3D/Box3"]
+mesh = SubResource("BoxMesh_06hqu")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("1_x6q64")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Box3"]
+shape = SubResource("BoxShape3D_e6eta")
+
+[node name="Box2" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -0.5, 3)
+
+[node name="Mesh" type="MeshInstance3D" parent="NavigationRegion3D/Box2"]
+mesh = SubResource("BoxMesh_h22sx")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("1_x6q64")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Box2"]
+shape = SubResource("BoxShape3D_me48w")
+
+[node name="Sedan" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_aacoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00936246, 0.5, 3.99391)
+target = NodePath("../Target")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2, 7, 0)
