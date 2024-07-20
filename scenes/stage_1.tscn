@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0r67xw1qypr4"]
+
+[ext_resource type="Script" path="res://scenes/GridHandler.gd" id="1_78tj7"]
+[ext_resource type="MeshLibrary" uid="uid://edivfulhihge" path="res://meshes/library_roads.tres" id="1_87dhb"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="2_msobk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_63c6i"]
+sky_top_color = Color(0.25098, 0.333333, 0.894118, 1)
+sky_horizon_color = Color(0.636274, 0.693137, 0.782353, 1)
+ground_bottom_color = Color(0.294118, 0.439216, 0.235294, 1)
+ground_horizon_color = Color(0.636274, 0.693137, 0.782353, 1)
+
+[sub_resource type="Sky" id="Sky_tuk7v"]
+sky_material = SubResource("ProceduralSkyMaterial_63c6i")
+
+[sub_resource type="Environment" id="Environment_rw2fi"]
+background_mode = 2
+sky = SubResource("Sky_tuk7v")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Stage1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rw2fi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_87dhb")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65534, 65534, 1, 65535, 65534, 1, 0, 65534, 1, 1, 65534, 1, 2, 65534, 1, 1, 65535, 1, 0, 65535, 0, 65535, 65535, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1)
+}
+script = ExtResource("1_78tj7")
+
+[node name="player" type="Node3D" parent="."]
+script = ExtResource("2_msobk")
+
+[node name="Camera3D" type="Camera3D" parent="player"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0.708586, 8.00156, 2.09495)
+projection = 1
+size = 18.277

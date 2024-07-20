@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvkq2r2t7xvpm"]
+[gd_scene load_steps=8 format=3 uid="uid://dvkq2r2t7xvpm"]
 
 [ext_resource type="ArrayMesh" uid="uid://bhnyytgq746ie" path="res://meshes/road_straight.res" id="1_t8ap0"]
 [ext_resource type="ArrayMesh" uid="uid://dn5s4v3fp0t3m" path="res://meshes/road_default.res" id="2_g7q4x"]
@@ -16,7 +16,10 @@ agent_radius = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ikf40"]
 margin = 0.0
-size = Vector3(1, 0.02, 0.795)
+size = Vector3(1, 0.02, 0.997874)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u6ivu"]
+points = PackedVector3Array(0.507937, 0.0238095, 0.507937, -0.507937, -0.0079334, -0.507937, -0.507937, 0.0238095, -0.507937, 0.507937, -0.0079334, -0.507937, -0.507937, -0.0079334, 0.507937, -0.507937, 0.0238095, 0.507937, 0.507937, 0.0238095, -0.507937, 0.507937, -0.0079334, 0.507937)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s3ijw"]
 points = PackedVector3Array(0.463119, 0.25, 0.463119, -0.478058, 0, -0.478058, -0.478058, 0, 0.478058, 0.478058, 0, -0.478058, -0.463119, 0.25, -0.463119, 0.478058, 0, 0.478058, -0.463119, 0.25, 0.463119, 0.463119, 0.25, -0.463119)
@@ -34,6 +37,12 @@ physics_material_override = SubResource("PhysicsMaterial_f6nb6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/NavigationRegion3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_ikf40")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+physics_material_override = SubResource("PhysicsMaterial_f6nb6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_u6ivu")
 
 [node name="default" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.24536)
