@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvkq2r2t7xvpm"]
+[gd_scene load_steps=15 format=3 uid="uid://dvkq2r2t7xvpm"]
 
-[ext_resource type="ArrayMesh" path="res://meshes/road_straight.res" id="1_t8ap0"]
+[ext_resource type="ArrayMesh" uid="uid://bhnyytgq746ie" path="res://meshes/road_straight.res" id="1_t8ap0"]
 [ext_resource type="ArrayMesh" uid="uid://dn5s4v3fp0t3m" path="res://meshes/road_default.res" id="2_g7q4x"]
+[ext_resource type="ArrayMesh" uid="uid://ds5c6ikkkeoeh" path="res://meshes/red_start.res" id="3_vx2gk"]
+[ext_resource type="ArrayMesh" uid="uid://b0uiqh5tvamla" path="res://meshes/red_end.res" id="4_l2yku"]
+[ext_resource type="Script" path="res://scenes/start_tile.gd" id="4_xgf77"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4wiav"]
 vertices = PackedVector3Array(-0.5, 0.03, -0.3975, -0.5, 0.03, 0.4025, 0.5, 0.03, 0.4025, 0.5, 0.03, -0.3975)
@@ -23,6 +26,19 @@ points = PackedVector3Array(0.507937, 0.0238095, 0.507937, -0.507937, -0.0079334
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s3ijw"]
 points = PackedVector3Array(0.463119, 0.25, 0.463119, -0.478058, 0, -0.478058, -0.478058, 0, 0.478058, 0.478058, 0, -0.478058, -0.463119, 0.25, -0.463119, 0.478058, 0, 0.478058, -0.463119, 0.25, 0.463119, 0.463119, 0.25, -0.463119)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3ea8v"]
+points = PackedVector3Array(0.507937, 0.0238095, 0.0951635, -0.507937, -0.0079334, -0.507937, -0.507937, 0.0238095, -0.507937, -0.507937, -0.0079334, 0.507937, 0.460305, -0.0079334, -0.238058, -0.507937, 0.0238095, 0.507937, 0.238058, -0.0079334, 0.460305, 0.206337, 0.0238095, -0.476116, 0.158705, 0.0238095, 0.492026, 0.0951635, -0.0079334, -0.507937, 0.460305, -0.0079334, 0.238058, 0.460305, 0.0238095, -0.238058, 0.396763, 0.0238095, 0.333321, 0.0951635, -0.0079334, 0.507937, 0.333321, -0.0079334, -0.396763, 0.507937, -0.0079334, -0.0951635, 0.0951635, 0.0238095, -0.507937, 0.396763, 0.0238095, -0.333321, 0.0951635, 0.0238095, 0.507937, 0.507937, 0.0238095, -0.0951635, 0.507937, -0.0079334, 0.0951635, 0.333321, -0.0079334, 0.396763, 0.238058, 0.0238095, 0.460305, 0.476116, 0.0238095, 0.206337, 0.206337, -0.0079334, -0.476116, 0.333321, 0.0238095, -0.396763, 0.333321, 0.0238095, 0.396763, 0.396763, -0.0079334, 0.333321, 0.396763, -0.0079334, -0.333321, 0.492026, -0.0079334, -0.158705, 0.238058, 0.0238095, -0.460305, 0.492026, -0.0079334, 0.158705)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_rgme0"]
+cell_size = 0.1
+cell_height = 0.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_361v7"]
+size = Vector3(0.815399, 0.0302734, 0.606323)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hrtta"]
+points = PackedVector3Array(0.507937, 0.0238095, 0.507937, -0.507937, -0.0079334, -0.507937, -0.507937, 0.0238095, -0.507937, 0.507937, -0.0079334, -0.507937, -0.507937, -0.0079334, 0.507937, -0.507937, 0.0238095, 0.507937, 0.507937, 0.0238095, -0.507937, 0.507937, -0.0079334, 0.507937)
 
 [node name="Meshlibrary" type="Node3D"]
 
@@ -52,3 +68,40 @@ mesh = ExtResource("2_g7q4x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="default/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_s3ijw")
+
+[node name="red_start" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.17157)
+mesh = ExtResource("3_vx2gk")
+script = ExtResource("4_xgf77")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="red_start"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="red_start/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3ea8v")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="red_start"]
+navigation_mesh = SubResource("NavigationMesh_rgme0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="red_start/NavigationRegion3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="red_start/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0992279, 0.00732422, -0.00152588)
+shape = SubResource("BoxShape3D_361v7")
+
+[node name="red_end" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17164, 0, 1.16694)
+mesh = ExtResource("4_l2yku")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="red_end"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="red_end/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_hrtta")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="red_end"]
+navigation_mesh = SubResource("NavigationMesh_rgme0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="red_end/NavigationRegion3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="red_end/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0992279, 0.00732422, -0.00152588)
+shape = SubResource("BoxShape3D_361v7")

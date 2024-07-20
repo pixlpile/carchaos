@@ -3,6 +3,7 @@ extends Node3D
 @export var available_tiles: Array[TileAttributes]
 
 @onready var buttons_container = $CanvasGroup/HFlowContainer
+@onready var spawner = $red_spawner
 
 var active_tile = 0
 
@@ -35,3 +36,7 @@ func highlight_button(id):
 	for button:Button in buttons:
 		button.button_pressed  = false
 	buttons[id].button_pressed = true
+
+
+func _on_button_pressed():
+	spawner.start_simulation()

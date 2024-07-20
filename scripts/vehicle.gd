@@ -6,6 +6,7 @@ extends RigidBody3D
 @export var inverse_rotation: bool = true
 @export var target: Node3D
 @export var explosion : PackedScene
+var target: Vector3
 var current_waypoint: Vector3
 var direction: Vector3
 var skip = true
@@ -14,6 +15,10 @@ var set_target = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+
+
+func set_target(vect):
+	target = vect
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

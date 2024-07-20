@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CarSpawnerAttributes" load_steps=3 format=3 uid="uid://s3kfy5a4ryfo"]
+
+[ext_resource type="Script" path="res://scripts/car_spawner.gd" id="1_f3uij"]
+[ext_resource type="PackedScene" uid="uid://ciypoloc1a8n1" path="res://cars/sedan.tscn" id="1_ly2dy"]
+
+[resource]
+script = ExtResource("1_f3uij")
+id = 0
+car = ExtResource("1_ly2dy")
