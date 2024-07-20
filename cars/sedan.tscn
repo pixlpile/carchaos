@@ -21,4 +21,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249867, 0)
 shape = SubResource("BoxShape3D_58m01")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="6"]
+path_desired_distance = 0.3
+target_desired_distance = 0.3
 debug_enabled = true

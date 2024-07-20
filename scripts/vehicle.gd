@@ -17,10 +17,12 @@ func _physics_process(delta):
 	if navigation.is_target_reachable() && not navigation.is_navigation_finished():
 		var next_pos = navigation.get_next_path_position()
 		next_pos.y = position.y
+		direction = (next_pos - position).normalized()
 		if (next_pos != current_waypoint):
 			current_waypoint = next_pos
 			look_at(next_pos)
-		direction = (next_pos - position).normalized()
+			var magnitude = linear_velocity.length()
+			linear_velocity = magnitude * direction
 		#linear_velocity = direction
 		apply_force(direction * speed * delta)
 	if not navigation.is_target_reachable():
