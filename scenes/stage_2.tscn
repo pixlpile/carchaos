@@ -1,61 +1,70 @@
-[gd_scene load_steps=23 format=3 uid="uid://cnrl6ho45qyn5"]
+[gd_scene load_steps=29 format=3 uid="uid://cnrl6ho45qyn5"]
 
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_ue5sq"]
 [ext_resource type="Resource" uid="uid://b2kwwl5dwn5ug" path="res://resources/tiles/default.tres" id="2_s1j7l"]
 [ext_resource type="Resource" uid="uid://b8mr36t8w4gtv" path="res://resources/tiles/straight_road_tile.tres" id="3_flqqc"]
 [ext_resource type="Resource" uid="uid://jx3k716m5ppu" path="res://resources/tiles/crossroads_tile.tres" id="4_d4i8u"]
 [ext_resource type="MeshLibrary" uid="uid://edivfulhihge" path="res://meshes/library_roads.tres" id="5_ekcaj"]
+[ext_resource type="Resource" uid="uid://dnxvim4jjo2p2" path="res://resources/tiles/turn_road.tres" id="5_n3uft"]
 [ext_resource type="Script" path="res://scripts/GridHandler.gd" id="6_k3w6i"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="7_2rubs"]
 [ext_resource type="Texture2D" uid="uid://bn2wfyeaqiteh" path="res://kenney_assets/kenney_isometric-roads/png/road.png" id="8_5khan"]
 [ext_resource type="Texture2D" uid="uid://bybxtk57xxqxw" path="res://kenney_assets/kenney_isometric-roads/png/roadEW.png" id="9_cg35w"]
+[ext_resource type="Texture2D" uid="uid://chqiek4cyhjoq" path="res://kenney_assets/kenney_pixel-vehicle-pack/PNG/Cars/suv.png" id="10_16a12"]
 [ext_resource type="Texture2D" uid="uid://bvkl4vl0vnax" path="res://kenney_assets/kenney_isometric-roads/png/crossroad.png" id="10_gw51j"]
 [ext_resource type="Script" path="res://scenes/red_spawner.gd" id="10_j8dkn"]
 [ext_resource type="PackedScene" uid="uid://ciypoloc1a8n1" path="res://cars/sedan.tscn" id="11_jjtgn"]
-[ext_resource type="PackedScene" path="res://cars/taxi.tscn" id="12_c0g1n"]
+[ext_resource type="PackedScene" uid="uid://qkpegcamvtgx" path="res://cars/taxi.tscn" id="12_c0g1n"]
 [ext_resource type="Script" path="res://scripts/destination.gd" id="12_wottn"]
 [ext_resource type="Texture2D" uid="uid://cicvka5v3kcwg" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles yellow/tileYellow_11.png" id="13_yah25"]
+[ext_resource type="Texture2D" uid="uid://b1nrwiphxyt8e" path="res://kenney_assets/kenney_isometric-roads/png/roadES.png" id="14_5jilo"]
 [ext_resource type="Texture2D" uid="uid://dbam4f863ogs1" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles red/tileRed_11.png" id="15_5bkd6"]
 [ext_resource type="Texture2D" uid="uid://bx0tkspnf84n0" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles red/tileRed_09.png" id="17_3mgrf"]
 [ext_resource type="Texture2D" uid="uid://bmswsknqdsw5s" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles yellow/tileYellow_09.png" id="18_uckq8"]
+[ext_resource type="AudioStream" uid="uid://dy7lox0bugfdw" path="res://audio/jingles_STEEL10.ogg" id="21_ahdav"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_63c6i"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ldrse"]
 sky_top_color = Color(0.25098, 0.333333, 0.894118, 1)
 sky_horizon_color = Color(0.636274, 0.693137, 0.782353, 1)
 ground_bottom_color = Color(0.294118, 0.439216, 0.235294, 1)
 ground_horizon_color = Color(0.636274, 0.693137, 0.782353, 1)
 
 [sub_resource type="Sky" id="Sky_tuk7v"]
-sky_material = SubResource("ProceduralSkyMaterial_63c6i")
+sky_material = SubResource("ProceduralSkyMaterial_ldrse")
 
-[sub_resource type="Environment" id="Environment_rw2fi"]
+[sub_resource type="Environment" id="Environment_sxds6"]
 background_mode = 2
 sky = SubResource("Sky_tuk7v")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_bldwx"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c8nb0"]
+texture = ExtResource("15_5bkd6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p2son"]
+texture = ExtResource("10_16a12")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k3o5w"]
 radius = 0.1
 
-[node name="Stage1" type="Node3D"]
+[node name="Stage2" type="Node3D"]
 script = ExtResource("1_ue5sq")
-available_tiles = Array[Resource("res://scripts/tile.gd")]([ExtResource("2_s1j7l"), ExtResource("3_flqqc"), ExtResource("4_d4i8u")])
+available_tiles = Array[Resource("res://scripts/tile.gd")]([ExtResource("2_s1j7l"), ExtResource("3_flqqc"), ExtResource("4_d4i8u"), ExtResource("5_n3uft")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_rw2fi")
+environment = SubResource("Environment_sxds6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
 [node name="GridMap" type="GridMap" parent="."]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
 mesh_library = ExtResource("5_ekcaj")
 cell_size = Vector3(1, 1, 1)
 cell_center_y = false
 bake_navigation = true
 data = {
-"cells": PackedInt32Array(65535, 65534, 1, 0, 65534, 1, 1, 65534, 1, 2, 65534, 1, 1, 65535, 1, 0, 65535, 1, 65535, 65535, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 2, 65535, 1, 65534, 65535, 1, 65534, 1, 1, 65535, 1, 1, 0, 1, 1, 1, 1, 1, 2, 1, 1, 65535, 65533, 1, 0, 65533, 1, 1, 65533, 1, 2, 65533, 1, 65534, 65534, 1, 65534, 65533, 1, 65533, 65533, 655362, 65533, 1, 655362, 3, 1, 3, 3, 65533, 3)
+"cells": PackedInt32Array(65534, 65534, 1441793, 65535, 65534, 1441793, 0, 65534, 655361, 2, 65534, 655361, 1, 65535, 655361, 0, 65535, 655361, 65535, 65535, 655361, 65534, 0, 655361, 65535, 0, 1, 0, 0, 1048577, 1, 0, 1441793, 2, 0, 1, 2, 65535, 655361, 65534, 65535, 655361, 65534, 1, 1, 65535, 1, 1, 0, 1, 1441793, 1, 1, 1048577, 2, 1, 1441793, 65534, 65533, 1441793, 65535, 65533, 1441793, 0, 65533, 655361, 3, 65533, 1441793, 2, 65533, 655361, 1, 65533, 655361, 1, 65534, 655361, 65534, 65532, 1441793, 0, 65532, 1441793, 65535, 65532, 1441793, 1, 65532, 1441793, 2, 65532, 1441793, 3, 65532, 1441793, 3, 65534, 1441793, 3, 65535, 1441793, 3, 0, 1441793, 3, 1, 1441793, 65533, 65533, 655362, 65533, 0, 655362, 4, 65532, 3, 4, 1, 3)
 }
 script = ExtResource("6_k3w6i")
 
@@ -64,139 +73,264 @@ script = ExtResource("7_2rubs")
 money = 10000
 
 [node name="Camera3D" type="Camera3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.709, 8, 0.125724)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.709, 8, -0.0672474)
 projection = 1
 current = true
 size = 8.0
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
-visible = false
+[node name="CanvasGroup" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
-[node name="HFlowContainer" type="HFlowContainer" parent="CanvasGroup"]
-offset_left = 22.0
-offset_top = 566.0
-offset_right = 1127.0
-offset_bottom = 649.0
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasGroup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.7778
 
-[node name="Button" type="Button" parent="CanvasGroup/HFlowContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasGroup/AspectRatioContainer"]
 layout_mode = 2
-focus_mode = 0
-toggle_mode = true
-button_pressed = true
-icon = ExtResource("8_5khan")
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="Button2" type="Button" parent="CanvasGroup/HFlowContainer"]
+[node name="CarsContainer" type="PanelContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-focus_mode = 0
-toggle_mode = true
-icon = ExtResource("9_cg35w")
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="Button3" type="Button" parent="CanvasGroup/HFlowContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer"]
 layout_mode = 2
-focus_mode = 0
-toggle_mode = true
-icon = ExtResource("10_gw51j")
+size_flags_vertical = 0
 
-[node name="Button" type="Button" parent="CanvasGroup"]
-offset_left = 276.0
-offset_top = 464.0
-offset_right = 840.0
-offset_bottom = 536.0
-theme_override_font_sizes/font_size = 32
+[node name="Label" type="Label" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Incomming cars"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/h_separation = 5
+
+[node name="Panel" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_c8nb0")
+
+[node name="Panel2" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_p2son")
+
+[node name="Panel3" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_p2son")
+
+[node name="Panel4" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_p2son")
+
+[node name="MoneyContainer" type="PanelContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/MoneyContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasGroup/AspectRatioContainer/MarginContainer/MoneyContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Cash"
+horizontal_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="CanvasGroup/AspectRatioContainer/MarginContainer/MoneyContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "1000 $"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 text = "Start"
 
-[node name="SimulationGroup" type="CanvasGroup" parent="."]
-
-[node name="Button" type="Button" parent="SimulationGroup"]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 413.0
-offset_top = 566.0
-offset_right = 797.0
-offset_bottom = 619.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
+[node name="HFlowContainer" type="HFlowContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 32
-text = "Retry"
 
-[node name="NextButton" type="Button" parent="SimulationGroup"]
+[node name="Button" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/icon_max_width = 48
+toggle_mode = true
+button_pressed = true
+text = "0"
+icon = ExtResource("8_5khan")
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/icon_max_width = 48
+toggle_mode = true
+text = "300
+"
+icon = ExtResource("9_cg35w")
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/icon_max_width = 48
+toggle_mode = true
+text = "600"
+icon = ExtResource("10_gw51j")
+icon_alignment = 1
+
+[node name="Button4" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/icon_max_width = 48
+toggle_mode = true
+text = "300"
+icon = ExtResource("14_5jilo")
+icon_alignment = 1
+
+[node name="SimulationGroup" type="CanvasLayer" parent="."]
 visible = false
-anchors_preset = 12
-anchor_top = 1.0
+follow_viewport_enabled = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="SimulationGroup"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 413.0
-offset_top = 464.0
-offset_right = 797.0
-offset_bottom = 517.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+ratio = 1.7778
+
+[node name="MarginContainer" type="MarginContainer" parent="SimulationGroup/AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SimulationGroup/AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="NextButton" type="Button" parent="SimulationGroup/AspectRatioContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 32
+text = "Next level"
+
+[node name="Button" type="Button" parent="SimulationGroup/AspectRatioContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 text = "Retry"
 
-[node name="spawner" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -2.35308, 0.2, -2.5)
+[node name="spawner_yellow" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -2.38728, 0.2, -2.52655)
 script = ExtResource("10_j8dkn")
 cars_to_spawn = Array[PackedScene]([ExtResource("12_c0g1n"), ExtResource("12_c0g1n"), ExtResource("12_c0g1n")])
-end_point = NodePath("../destination2")
+end_point = NodePath("../destination2_yellow")
 
-[node name="Timer" type="Timer" parent="spawner"]
+[node name="Timer" type="Timer" parent="spawner_yellow"]
 wait_time = 3.0
 one_shot = true
 
-[node name="Sprite3D" type="Sprite3D" parent="spawner"]
+[node name="Sprite3D" type="Sprite3D" parent="spawner_yellow"]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.165318, 0)
 texture = ExtResource("13_yah25")
 
-[node name="spawner2" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -2.34088, 0.2, 1.5)
-script = ExtResource("10_j8dkn")
-cars_to_spawn = Array[PackedScene]([ExtResource("11_jjtgn"), ExtResource("11_jjtgn"), ExtResource("11_jjtgn")])
-end_point = NodePath("../destination")
-
-[node name="Timer" type="Timer" parent="spawner2"]
-wait_time = 3.0
-one_shot = true
-
-[node name="Sprite3D" type="Sprite3D" parent="spawner2"]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.165318, 0)
-texture = ExtResource("15_5bkd6")
-
-[node name="destination" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45123, 0, -2.5)
+[node name="destination2_yellow" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59835, 0, 1.47611)
 script = ExtResource("12_wottn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="destination"]
-shape = SubResource("CylinderShape3D_bldwx")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="destination2_yellow"]
+shape = SubResource("CylinderShape3D_k3o5w")
 
-[node name="Sprite3D" type="Sprite3D" parent="destination"]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0287817, 0)
-texture = ExtResource("17_3mgrf")
-
-[node name="destination2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43738, 0, 1.5)
-script = ExtResource("12_wottn")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="destination2"]
-shape = SubResource("CylinderShape3D_bldwx")
-
-[node name="Sprite3D" type="Sprite3D" parent="destination2"]
+[node name="Sprite3D" type="Sprite3D" parent="destination2_yellow"]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0287817, 0)
 texture = ExtResource("18_uckq8")
 
-[connection signal="pressed" from="CanvasGroup/HFlowContainer/Button" to="." method="set_active_tile" binds= [0]]
-[connection signal="pressed" from="CanvasGroup/HFlowContainer/Button2" to="." method="set_active_tile" binds= [1]]
-[connection signal="pressed" from="CanvasGroup/HFlowContainer/Button3" to="." method="set_active_tile" binds= [2]]
-[connection signal="pressed" from="CanvasGroup/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="SimulationGroup/Button" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="SimulationGroup/NextButton" to="." method="_on_next_level_pressed"]
-[connection signal="timeout" from="spawner/Timer" to="spawner" method="_on_timer_timeout"]
-[connection signal="timeout" from="spawner2/Timer" to="spawner2" method="_on_timer_timeout"]
-[connection signal="body_entered" from="destination" to="destination" method="_on_body_entered"]
-[connection signal="body_entered" from="destination2" to="destination2" method="_on_body_entered"]
+[node name="spawner_red" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -2.38728, 0.2, 0.492621)
+script = ExtResource("10_j8dkn")
+cars_to_spawn = Array[PackedScene]([ExtResource("11_jjtgn"), ExtResource("11_jjtgn"), ExtResource("11_jjtgn")])
+end_point = NodePath("../destination_red")
+
+[node name="Timer" type="Timer" parent="spawner_red"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Sprite3D" type="Sprite3D" parent="spawner_red"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.165318, 0)
+texture = ExtResource("15_5bkd6")
+
+[node name="destination_red" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59835, 0, -3.50663)
+script = ExtResource("12_wottn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="destination_red"]
+shape = SubResource("CylinderShape3D_k3o5w")
+
+[node name="Sprite3D" type="Sprite3D" parent="destination_red"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0287817, 0)
+texture = ExtResource("17_3mgrf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_ahdav")
+
+[connection signal="pressed" from="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="SimulationGroup/AspectRatioContainer/MarginContainer/VBoxContainer/NextButton" to="." method="_on_next_level_pressed"]
+[connection signal="timeout" from="spawner_yellow/Timer" to="spawner_yellow" method="_on_timer_timeout"]
+[connection signal="body_entered" from="destination2_yellow" to="destination2_yellow" method="_on_body_entered"]
+[connection signal="timeout" from="spawner_red/Timer" to="spawner_red" method="_on_timer_timeout"]
+[connection signal="body_entered" from="destination_red" to="destination_red" method="_on_body_entered"]

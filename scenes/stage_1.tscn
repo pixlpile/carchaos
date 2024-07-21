@@ -25,12 +25,12 @@ sky_horizon_color = Color(0.636274, 0.693137, 0.782353, 1)
 ground_bottom_color = Color(0.294118, 0.439216, 0.235294, 1)
 ground_horizon_color = Color(0.636274, 0.693137, 0.782353, 1)
 
-[sub_resource type="Sky" id="Sky_tuk7v"]
+[sub_resource type="Sky" id="Sky_aklbk"]
 sky_material = SubResource("ProceduralSkyMaterial_63c6i")
 
 [sub_resource type="Environment" id="Environment_rw2fi"]
 background_mode = 2
-sky = SubResource("Sky_tuk7v")
+sky = SubResource("Sky_aklbk")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -183,7 +183,7 @@ layout_mode = 2
 size_flags_vertical = 8
 alignment = 1
 
-[node name="Button" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer"]
+[node name="Button_start" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -289,7 +289,8 @@ texture = ExtResource("15_sxbrf")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_3ty7v")
 
-[connection signal="pressed" from="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/Button_start" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="SimulationGroup/AspectRatioContainer/MarginContainer/VBoxContainer/NextButton" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="SimulationGroup/AspectRatioContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_retry_pressed"]
 [connection signal="timeout" from="spawner/Timer" to="spawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="destination" to="destination" method="_on_body_entered"]
