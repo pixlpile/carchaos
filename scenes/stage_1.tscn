@@ -60,7 +60,7 @@ cell_size = Vector3(1, 1, 1)
 cell_center_y = false
 bake_navigation = true
 data = {
-"cells": PackedInt32Array(65534, 65534, 1, 65535, 65534, 1, 0, 65534, 1441793, 1, 65534, 1, 2, 65534, 1, 1, 65535, 1, 0, 65535, 1, 65535, 65535, 1, 65534, 0, 655361, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 2, 65535, 1, 65534, 65535, 1, 65534, 1, 1, 65535, 1, 1, 0, 1, 1, 1, 1, 1, 2, 1, 1, 65534, 65533, 1441793, 65535, 65533, 1441793, 0, 65533, 1441793, 1, 65533, 1441793, 2, 65533, 1, 65533, 65535, 655362, 3, 65533, 3)
+"cells": PackedInt32Array(65534, 65534, 1, 65535, 65534, 1441793, 0, 65534, 655361, 2, 65534, 655361, 1, 65535, 655361, 0, 65535, 655361, 65535, 65535, 655361, 65534, 0, 655361, 65535, 0, 1, 0, 0, 1048577, 1, 0, 1048577, 2, 0, 1, 2, 65535, 655361, 65534, 65535, 655361, 65534, 1, 1, 65535, 1, 1, 0, 1, 1048577, 1, 1, 1048577, 2, 1, 1, 65534, 65533, 1441793, 65535, 65533, 1441793, 0, 65533, 655361, 65533, 65535, 655362, 3, 65533, 3, 2, 65533, 655361, 1, 65533, 655361, 1, 65534, 655361)
 }
 script = ExtResource("1_78tj7")
 
@@ -285,5 +285,7 @@ shape = SubResource("CylinderShape3D_bldwx")
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0287817, 0)
 texture = ExtResource("15_sxbrf")
 
+[connection signal="pressed" from="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="SimulationGroup/AspectRatioContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_retry_pressed"]
 [connection signal="timeout" from="spawner/Timer" to="spawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="destination" to="destination" method="_on_body_entered"]

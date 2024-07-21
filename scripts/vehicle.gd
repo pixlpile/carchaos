@@ -16,6 +16,8 @@ var have_set_target = true
 func _ready():
 	add_to_group("vehicle")
 	direction = (global_transform.basis * Vector3.FORWARD)
+	if inverse_rotation:
+		look_at(-direction + position)
 
 
 func set_target(vect):
@@ -38,14 +40,14 @@ func _physics_process(delta):
 			current_waypoint = next_pos
 			var angle = Quaternion(direction, global_position.direction_to(current_waypoint)).get_euler().y
 			direction = global_position.direction_to(current_waypoint)
-			if absf(current_angle - angle) > .1:
+			var magnitude = linear_velocity.length()
+			linear_velocity = magnitude * direction
+			if absf(current_angle - angle) > .025:
 				current_angle = angle
 				if inverse_rotation:
 					look_at(-direction + position)
 				else:
 					look_at(next_pos)
-				var magnitude = linear_velocity.length()
-				linear_velocity = magnitude * direction
 	apply_force(direction * speed * delta)
 		
 	if not navigation.is_target_reachable():
