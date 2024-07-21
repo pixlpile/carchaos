@@ -43,12 +43,13 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
 mesh_library = ExtResource("5_ekcaj")
 cell_size = Vector3(1, 1, 1)
 cell_center_y = false
 bake_navigation = true
 data = {
-"cells": PackedInt32Array(65534, 65534, 1, 65535, 65534, 1, 0, 65534, 1, 1, 65534, 1, 2, 65534, 1, 1, 65535, 1, 0, 65535, 1, 65535, 65535, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 2, 65535, 1, 65534, 65535, 655362, 65534, 1, 1, 65535, 1, 1, 0, 1, 1, 1, 1, 1, 2, 1, 1, 65534, 65533, 1, 65535, 65533, 1, 0, 65533, 1, 1, 65533, 1, 2, 65533, 3)
+"cells": PackedInt32Array(65535, 65534, 1, 0, 65534, 1, 1, 65534, 1, 2, 65534, 1, 1, 65535, 1, 0, 65535, 1, 65535, 65535, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 2, 65535, 1, 65534, 65535, 1, 65534, 1, 655362, 65535, 1, 1, 0, 1, 1, 1, 1, 1, 2, 1, 3, 65535, 65533, 1, 0, 65533, 1, 1, 65533, 1, 2, 65533, 3, 65534, 65534, 1, 65534, 65533, 655362)
 }
 script = ExtResource("6_k3w6i")
 
@@ -134,12 +135,22 @@ theme_override_font_sizes/font_size = 32
 text = "Retry"
 
 [node name="spawner" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -1.5, 0.2, -0.5)
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -1.5, 0.2, -2.5)
+script = ExtResource("10_j8dkn")
+cars_to_spawn = Array[PackedScene]([ExtResource("11_jjtgn"), ExtResource("11_jjtgn"), ExtResource("11_jjtgn")])
+end_point = NodePath("../destination2")
+
+[node name="Timer" type="Timer" parent="spawner"]
+wait_time = 3.0
+one_shot = true
+
+[node name="spawner2" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -1.5, 0.2, 1.5)
 script = ExtResource("10_j8dkn")
 cars_to_spawn = Array[PackedScene]([ExtResource("11_jjtgn"), ExtResource("11_jjtgn"), ExtResource("11_jjtgn")])
 end_point = NodePath("../destination")
 
-[node name="Timer" type="Timer" parent="spawner"]
+[node name="Timer" type="Timer" parent="spawner2"]
 wait_time = 3.0
 one_shot = true
 
@@ -150,6 +161,13 @@ script = ExtResource("12_wottn")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="destination"]
 shape = SubResource("CylinderShape3D_bldwx")
 
+[node name="destination2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.5)
+script = ExtResource("12_wottn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="destination2"]
+shape = SubResource("CylinderShape3D_bldwx")
+
 [connection signal="pressed" from="CanvasGroup/HFlowContainer/Button" to="." method="set_active_tile" binds= [0]]
 [connection signal="pressed" from="CanvasGroup/HFlowContainer/Button2" to="." method="set_active_tile" binds= [1]]
 [connection signal="pressed" from="CanvasGroup/HFlowContainer/Button3" to="." method="set_active_tile" binds= [2]]
@@ -157,4 +175,6 @@ shape = SubResource("CylinderShape3D_bldwx")
 [connection signal="pressed" from="SimulationGroup/Button" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="SimulationGroup/NextButton" to="." method="_on_next_level_pressed"]
 [connection signal="timeout" from="spawner/Timer" to="spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="spawner2/Timer" to="spawner2" method="_on_timer_timeout"]
 [connection signal="body_entered" from="destination" to="destination" method="_on_body_entered"]
+[connection signal="body_entered" from="destination2" to="destination2" method="_on_body_entered"]
