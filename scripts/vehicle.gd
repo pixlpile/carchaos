@@ -2,7 +2,7 @@ class_name Vehicle
 extends RigidBody3D
 
 @onready var navigation: NavigationAgent3D = $NavigationAgent3D
-@export var speed = 1.0
+@export var speed = 100.0
 @export var inverse_rotation: bool = true
 @export var explosion : PackedScene
 var target: Vector3

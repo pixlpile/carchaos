@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://yhddn1og05hs"]
+
+[ext_resource type="PackedScene" uid="uid://btjp72da6g7qe" path="res://kenney_assets/kenney_car-kit/Models/GLB format/hatchback-sports.glb" id="1_k8ijq"]
+[ext_resource type="Script" path="res://scripts/vehicle.gd" id="2_15e7s"]
+[ext_resource type="PhysicsMaterial" uid="uid://bbt4n3g0i71eo" path="res://resources/vehicle_physics.tres" id="2_f18fc"]
+[ext_resource type="PackedScene" uid="uid://dvmld3td1v4ph" path="res://cars/debris.tscn" id="3_l6hcf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wo81u"]
+resource_local_to_scene = false
+resource_name = ""
+custom_solver_bias = 0.0
+margin = 0.04
+radius = 0.25
+height = 1.0
+
+[node name="Sports" instance=ExtResource("1_k8ijq")]
+physics_material_override = ExtResource("2_f18fc")
+can_sleep = false
+lock_rotation = true
+script = ExtResource("2_15e7s")
+speed = 130.0
+explosion = ExtResource("3_l6hcf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.231, 0)
+shape = SubResource("CapsuleShape3D_wo81u")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="6"]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

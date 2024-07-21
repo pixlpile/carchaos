@@ -1,26 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://qkpegcamvtgx"]
+[gd_scene load_steps=7 format=3 uid="uid://d6wunpru0wda"]
 
 [ext_resource type="PackedScene" uid="uid://cepqc3bjs83os" path="res://kenney_assets/kenney_car-kit/Models/GLB format/sedan.glb" id="1_1wrtt"]
+[ext_resource type="PhysicsMaterial" uid="uid://bbt4n3g0i71eo" path="res://resources/vehicle_physics.tres" id="2_hoya5"]
 [ext_resource type="Script" path="res://scripts/vehicle.gd" id="2_oukd8"]
 [ext_resource type="PackedScene" uid="uid://bs7v1e6ebk7st" path="res://kenney_assets/kenney_car-kit/Models/GLB format/debris-drivetrain.glb" id="3_hn1qd"]
-[ext_resource type="ArrayMesh" uid="uid://b5i2wsrej51mf" path="res://meshes/taxi_body.res" id="4_e26k5"]
-[ext_resource type="AudioStream" uid="uid://dptlrwdl1yhmg" path="res://audio/impactPlate_heavy_002.ogg" id="5_7av7y"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tqp6y"]
-friction = 0.1
+[ext_resource type="ArrayMesh" path="res://meshes/taxi_body.res" id="4_e26k5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kob2w"]
+resource_local_to_scene = false
+resource_name = ""
+custom_solver_bias = 0.0
+margin = 0.04
 radius = 0.25
 height = 1.0
 
 [node name="taxi" instance=ExtResource("1_1wrtt")]
-physics_material_override = SubResource("PhysicsMaterial_tqp6y")
+physics_material_override = ExtResource("2_hoya5")
 can_sleep = false
 lock_rotation = true
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("2_oukd8")
-speed = 100.0
 explosion = ExtResource("3_hn1qd")
 
 [node name="body" parent="." index="0"]
@@ -46,9 +46,5 @@ shape = SubResource("CapsuleShape3D_kob2w")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="6"]
 path_desired_distance = 0.1
 target_desired_distance = 0.1
-debug_enabled = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="7"]
-stream = ExtResource("5_7av7y")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
