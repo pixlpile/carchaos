@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cepqc3bjs83os" path="res://kenney_assets/kenney_car-kit/Models/GLB format/sedan.glb" id="1_1wrtt"]
 [ext_resource type="PhysicsMaterial" uid="uid://bbt4n3g0i71eo" path="res://resources/vehicle_physics.tres" id="2_hoya5"]
 [ext_resource type="Script" path="res://scripts/vehicle.gd" id="2_oukd8"]
-[ext_resource type="PackedScene" uid="uid://bs7v1e6ebk7st" path="res://kenney_assets/kenney_car-kit/Models/GLB format/debris-drivetrain.glb" id="3_hn1qd"]
 [ext_resource type="ArrayMesh" path="res://meshes/taxi_body.res" id="4_e26k5"]
+[ext_resource type="PackedScene" uid="uid://dvmld3td1v4ph" path="res://cars/debris.tscn" id="4_grkr6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kob2w"]
 resource_local_to_scene = false
@@ -21,7 +21,7 @@ lock_rotation = true
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("2_oukd8")
-explosion = ExtResource("3_hn1qd")
+explosion = ExtResource("4_grkr6")
 
 [node name="body" parent="." index="0"]
 transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 0.0822917, -0.00825)
