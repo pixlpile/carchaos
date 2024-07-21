@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://chqq5ltp4n0mf"]
+[gd_scene load_steps=49 format=3 uid="uid://chqq5ltp4n0mf"]
 
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_jmrns"]
 [ext_resource type="Resource" uid="uid://b2kwwl5dwn5ug" path="res://resources/tiles/default.tres" id="2_vv5yl"]
@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://dy7lox0bugfdw" path="res://audio/jingles_STEEL10.ogg" id="24_kest1"]
 [ext_resource type="PackedScene" uid="uid://yhddn1og05hs" path="res://cars/sports.tscn" id="25_cl7dq"]
 [ext_resource type="PackedScene" uid="uid://dlvqivtu8cv88" path="res://cars/van.tscn" id="26_uns16"]
+[ext_resource type="PackedScene" uid="uid://d6wunpru0wda" path="res://cars/taxi.tscn" id="28_6qdro"]
 [ext_resource type="Texture2D" uid="uid://btyddlby6lt1q" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles blue/tileBlue_09.png" id="29_7uicb"]
 [ext_resource type="Texture2D" uid="uid://o37y0idmmmob" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles green/tileGreen_09.png" id="30_0snv3"]
 
@@ -107,7 +108,7 @@ script = ExtResource("8_xcp6l")
 
 [node name="player" type="Node3D" parent="."]
 script = ExtResource("9_ud20m")
-money = 20000
+money = 25000
 
 [node name="Camera3D" type="Camera3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 8, 1.5)
@@ -416,7 +417,7 @@ size_flags_vertical = 8
 text = "Retry"
 
 [node name="red_spawner" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 4.5, 0.2, -1.5)
+transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 4.5, 0.2, -1.5)
 script = ExtResource("18_jn25q")
 cars_to_spawn = Array[PackedScene]([ExtResource("19_m3utn"), ExtResource("19_m3utn"), ExtResource("19_m3utn")])
 end_point = NodePath("../red_destination")
@@ -458,7 +459,7 @@ transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 
 texture = ExtResource("16_vpwua")
 
 [node name="blue_spawner" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 2.5, 0.2, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.2, 2.5)
 script = ExtResource("18_jn25q")
 cars_to_spawn = Array[PackedScene]([ExtResource("26_uns16"), ExtResource("26_uns16"), ExtResource("26_uns16")])
 end_point = NodePath("../blue_destination")
@@ -468,14 +469,14 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Sprite3D" type="Sprite3D" parent="blue_spawner"]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.165, 0)
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, -0.165, 0)
 texture = ExtResource("14_3oskj")
 
 [node name="yellow_spawner" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -0.5, 0.2, -5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, -5.5)
 script = ExtResource("18_jn25q")
-cars_to_spawn = Array[PackedScene]([ExtResource("26_uns16"), ExtResource("26_uns16")])
-end_point = NodePath("../blue_destination")
+cars_to_spawn = Array[PackedScene]([ExtResource("28_6qdro"), ExtResource("28_6qdro"), ExtResource("28_6qdro")])
+end_point = NodePath("../yellow_destination")
 
 [node name="Timer" type="Timer" parent="yellow_spawner"]
 wait_time = 3.0

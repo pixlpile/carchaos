@@ -7,14 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://dvmld3td1v4ph" path="res://cars/debris.tscn" id="4_grkr6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kob2w"]
-resource_local_to_scene = false
-resource_name = ""
-custom_solver_bias = 0.0
-margin = 0.04
 radius = 0.25
 height = 1.0
 
 [node name="taxi" instance=ExtResource("1_1wrtt")]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 physics_material_override = ExtResource("2_hoya5")
 can_sleep = false
 lock_rotation = true

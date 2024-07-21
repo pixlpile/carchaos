@@ -76,7 +76,7 @@ func get_grid_placement():
 
 func buy_tile(current_tile_cost):
 	var cost = current_stage.get_cost()
-	if money + current_tile_cost > cost:
+	if money + current_tile_cost >= cost:
 		money += current_tile_cost-cost
 		return true
 	else: 

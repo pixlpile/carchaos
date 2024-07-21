@@ -6,17 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://dvmld3td1v4ph" path="res://cars/debris.tscn" id="3_l6hcf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wo81u"]
-resource_local_to_scene = false
-resource_name = ""
-custom_solver_bias = 0.0
-margin = 0.04
 radius = 0.25
 height = 1.0
 
 [node name="Sports" instance=ExtResource("1_k8ijq")]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 physics_material_override = ExtResource("2_f18fc")
 can_sleep = false
 lock_rotation = true
+max_contacts_reported = 5
+contact_monitor = true
 script = ExtResource("2_15e7s")
 speed = 130.0
 explosion = ExtResource("3_l6hcf")

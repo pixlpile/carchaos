@@ -6,17 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://dvmld3td1v4ph" path="res://cars/debris.tscn" id="3_j11h1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bomk5"]
-resource_local_to_scene = false
-resource_name = ""
-custom_solver_bias = 0.0
-margin = 0.04
 radius = 0.25
 height = 1.0
 
 [node name="Van" instance=ExtResource("1_0kb8i")]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 physics_material_override = ExtResource("2_4dmbe")
 can_sleep = false
 lock_rotation = true
+max_contacts_reported = 5
+contact_monitor = true
 script = ExtResource("2_4ljyr")
 speed = 70.0
 explosion = ExtResource("3_j11h1")
