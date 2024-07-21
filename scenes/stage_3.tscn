@@ -1,11 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://cc7mo4obimm1y"]
+[gd_scene load_steps=37 format=3 uid="uid://cfrpjnn6vq2xv"]
 
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_nh7kn"]
 [ext_resource type="Resource" uid="uid://b2kwwl5dwn5ug" path="res://resources/tiles/default.tres" id="2_at5e1"]
+[ext_resource type="Resource" uid="uid://jx3k716m5ppu" path="res://resources/tiles/crossroads_tile.tres" id="3_4fws7"]
 [ext_resource type="Resource" uid="uid://b8mr36t8w4gtv" path="res://resources/tiles/straight_road_tile.tres" id="3_i3s7h"]
-[ext_resource type="Script" path="res://scripts/tile.gd" id="4_5i66c"]
-[ext_resource type="PackedScene" uid="uid://cnrl6ho45qyn5" path="res://scenes/stage_2.tscn" id="5_ip8mi"]
+[ext_resource type="Resource" uid="uid://c1g05b4om4kn1" path="res://resources/tiles/turn_road.tres" id="4_47wfd"]
+[ext_resource type="Resource" uid="uid://dg6wi0yme6ho1" path="res://resources/tiles/road_t.tres" id="4_npj7u"]
 [ext_resource type="MeshLibrary" uid="uid://edivfulhihge" path="res://meshes/library_roads.tres" id="6_7lp8f"]
+[ext_resource type="PackedScene" uid="uid://dslyvcmecnld3" path="res://scenes/stage_4.tscn" id="7_2ul8r"]
 [ext_resource type="Script" path="res://scripts/GridHandler.gd" id="7_36due"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="8_hmdfy"]
 [ext_resource type="Texture2D" uid="uid://chqiek4cyhjoq" path="res://kenney_assets/kenney_pixel-vehicle-pack/PNG/Cars/suv.png" id="9_lcm53"]
@@ -13,15 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://bybxtk57xxqxw" path="res://kenney_assets/kenney_isometric-roads/png/roadEW.png" id="10_dnw8o"]
 [ext_resource type="Texture2D" uid="uid://b1nrwiphxyt8e" path="res://kenney_assets/kenney_isometric-roads/png/roadES.png" id="11_p8m47"]
 [ext_resource type="Script" path="res://scenes/red_spawner.gd" id="12_yqfu0"]
+[ext_resource type="Texture2D" uid="uid://lsq146uu5yrk" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles blue/tileBlue_11.png" id="13_24bqh"]
 [ext_resource type="PackedScene" uid="uid://ciypoloc1a8n1" path="res://cars/sedan.tscn" id="13_tcsll"]
 [ext_resource type="Texture2D" uid="uid://dbam4f863ogs1" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles red/tileRed_11.png" id="14_d7lf1"]
+[ext_resource type="Texture2D" uid="uid://dekdcdlqfqhkp" path="res://kenney_assets/kenney_pixel-vehicle-pack/PNG/Cars/transport.png" id="14_ui31v"]
 [ext_resource type="Script" path="res://scripts/destination.gd" id="15_dyhe4"]
 [ext_resource type="Texture2D" uid="uid://bx0tkspnf84n0" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles red/tileRed_09.png" id="16_68u4k"]
-
-[sub_resource type="Resource" id="Resource_qtna3"]
-script = ExtResource("4_5i66c")
-id = 6
-cost = 300
+[ext_resource type="AudioStream" uid="uid://dy7lox0bugfdw" path="res://audio/jingles_STEEL10.ogg" id="18_8rvyt"]
+[ext_resource type="Texture2D" uid="uid://bvkl4vl0vnax" path="res://kenney_assets/kenney_isometric-roads/png/crossroad.png" id="18_v200p"]
+[ext_resource type="Texture2D" uid="uid://l7ooaesneebo" path="res://kenney_assets/kenney_isometric-roads/png/crossroadESW.png" id="19_0ipi2"]
+[ext_resource type="PackedScene" uid="uid://yhddn1og05hs" path="res://cars/sports.tscn" id="22_5a648"]
+[ext_resource type="Texture2D" uid="uid://btyddlby6lt1q" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles blue/tileBlue_09.png" id="25_e8tgu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_63c6i"]
 sky_top_color = Color(0.25098, 0.333333, 0.894118, 1)
@@ -29,34 +33,47 @@ sky_horizon_color = Color(0.636274, 0.693137, 0.782353, 1)
 ground_bottom_color = Color(0.294118, 0.439216, 0.235294, 1)
 ground_horizon_color = Color(0.636274, 0.693137, 0.782353, 1)
 
-[sub_resource type="Sky" id="Sky_tuk7v"]
+[sub_resource type="Sky" id="Sky_swpf3"]
 sky_material = SubResource("ProceduralSkyMaterial_63c6i")
 
 [sub_resource type="Environment" id="Environment_rw2fi"]
 background_mode = 2
-sky = SubResource("Sky_tuk7v")
+sky = SubResource("Sky_swpf3")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_scbsq"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sk4jw"]
 texture = ExtResource("14_d7lf1")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_82cpo"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c24ao"]
 texture = ExtResource("9_lcm53")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iw0r0"]
+texture = ExtResource("13_24bqh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_adaib"]
+texture = ExtResource("14_ui31v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p01c2"]
+texture = ExtResource("14_ui31v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ed6t"]
+texture = ExtResource("14_ui31v")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bldwx"]
 radius = 0.1
 
-[node name="Stage1" type="Node3D"]
+[node name="Stage3" type="Node3D"]
 script = ExtResource("1_nh7kn")
-available_tiles = Array[ExtResource("4_5i66c")]([ExtResource("2_at5e1"), ExtResource("3_i3s7h"), SubResource("Resource_qtna3")])
-next_level = ExtResource("5_ip8mi")
+available_tiles = Array[Resource("res://scripts/tile.gd")]([ExtResource("2_at5e1"), ExtResource("3_4fws7"), ExtResource("4_npj7u"), ExtResource("3_i3s7h"), ExtResource("4_47wfd")])
+cars_to_finish = 6
+next_level = ExtResource("7_2ul8r")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rw2fi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(0.3021, 0.825562, -0.476636, 0, 0.499998, 0.866027, 0.953276, -0.261627, 0.15105, 0, 6.3581, 0)
 shadow_enabled = true
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -65,7 +82,7 @@ cell_size = Vector3(1, 1, 1)
 cell_center_y = false
 bake_navigation = true
 data = {
-"cells": PackedInt32Array(65534, 65534, 1, 65535, 65534, 1, 0, 65534, 1441793, 1, 65534, 1, 2, 65534, 1, 1, 65535, 1, 0, 65535, 1, 65535, 65535, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 2, 65535, 1, 65534, 65535, 1, 65534, 1, 1, 65535, 1, 1, 0, 1, 1, 1, 1, 1, 2, 1, 1, 65534, 65533, 1, 65535, 65533, 1, 0, 65533, 1, 1, 65533, 1, 2, 65533, 1, 65533, 65535, 655362, 3, 65533, 3)
+"cells": PackedInt32Array(65534, 65534, 1441793, 65535, 65534, 9, 0, 65534, 9, 2, 65534, 655361, 1, 65535, 655361, 0, 65535, 9, 65535, 65535, 9, 65534, 0, 655361, 65535, 0, 1, 0, 0, 1048577, 1, 0, 1, 2, 0, 1, 2, 65535, 655361, 65534, 65535, 655361, 65534, 1, 1, 65535, 1, 1, 0, 1, 1, 1, 1, 1048577, 2, 1, 1, 65534, 65533, 1, 65535, 65533, 1, 0, 65533, 655361, 65533, 65535, 655361, 2, 65533, 655361, 1, 65533, 655361, 1, 65534, 655361, 65533, 65533, 655361, 65533, 65534, 655361, 65533, 0, 655361, 65533, 1, 655361, 65532, 65533, 655361, 65532, 65534, 655361, 65532, 65535, 655361, 65532, 0, 655361, 65532, 1, 655361, 65531, 65535, 655362, 65532, 65532, 1, 65533, 65532, 1, 65534, 65532, 1, 65535, 65532, 1, 0, 65532, 1, 1, 65532, 1, 2, 65532, 1, 65531, 65534, 655362, 2, 65531, 1048579, 3, 1, 3)
 }
 script = ExtResource("7_36due")
 
@@ -74,8 +91,7 @@ script = ExtResource("8_hmdfy")
 money = 10000
 
 [node name="Camera3D" type="Camera3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.709, 8, -0.0672474)
-projection = 1
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 6, 1.5)
 current = true
 size = 8.0
 
@@ -134,28 +150,61 @@ custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_scbsq")
+theme_override_styles/panel = SubResource("StyleBoxTexture_sk4jw")
 
 [node name="Panel2" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_82cpo")
+theme_override_styles/panel = SubResource("StyleBoxTexture_c24ao")
 
 [node name="Panel3" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_82cpo")
+theme_override_styles/panel = SubResource("StyleBoxTexture_c24ao")
 
 [node name="Panel4" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_82cpo")
+theme_override_styles/panel = SubResource("StyleBoxTexture_c24ao")
+
+[node name="HFlowContainer2" type="HFlowContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/h_separation = 5
+
+[node name="Panel" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer2"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_iw0r0")
+
+[node name="Panel2" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer2"]
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_adaib")
+
+[node name="Panel3" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer2"]
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_p01c2")
+
+[node name="Panel4" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer2"]
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ed6t")
 
 [node name="MoneyContainer" type="PanelContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer"]
 custom_minimum_size = Vector2(160, 0)
@@ -187,7 +236,7 @@ layout_mode = 2
 size_flags_vertical = 8
 alignment = 1
 
-[node name="Button" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer"]
+[node name="Button_start" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -217,10 +266,26 @@ focus_mode = 0
 theme_override_constants/icon_max_width = 48
 toggle_mode = true
 text = "200"
-icon = ExtResource("10_dnw8o")
+icon = ExtResource("18_v200p")
 icon_alignment = 1
 
 [node name="Button3" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/icon_max_width = 48
+toggle_mode = true
+icon = ExtResource("19_0ipi2")
+icon_alignment = 1
+
+[node name="Button4" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/icon_max_width = 48
+toggle_mode = true
+icon = ExtResource("10_dnw8o")
+icon_alignment = 1
+
+[node name="Button5" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/HFlowContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_constants/icon_max_width = 48
@@ -266,7 +331,7 @@ size_flags_vertical = 8
 text = "Retry"
 
 [node name="spawner" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -2.38728, 0.2, -0.5)
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -4.4478, 0.2, -0.5)
 script = ExtResource("12_yqfu0")
 cars_to_spawn = Array[PackedScene]([ExtResource("13_tcsll"), ExtResource("13_tcsll"), ExtResource("13_tcsll")])
 end_point = NodePath("../destination")
@@ -279,8 +344,22 @@ one_shot = true
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.165318, 0)
 texture = ExtResource("14_d7lf1")
 
+[node name="spawner2" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -4.5, 0.2, -1.5)
+script = ExtResource("12_yqfu0")
+cars_to_spawn = Array[PackedScene]([ExtResource("22_5a648"), ExtResource("22_5a648"), ExtResource("22_5a648")])
+end_point = NodePath("../destination2")
+
+[node name="Timer" type="Timer" parent="spawner2"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Sprite3D" type="Sprite3D" parent="spawner2"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.165318, 0)
+texture = ExtResource("13_24bqh")
+
 [node name="destination" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49846, 0, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -4.5)
 script = ExtResource("15_dyhe4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="destination"]
@@ -290,7 +369,24 @@ shape = SubResource("CylinderShape3D_bldwx")
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0287817, 0)
 texture = ExtResource("16_68u4k")
 
+[node name="destination2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 1.5)
+script = ExtResource("15_dyhe4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="destination2"]
+shape = SubResource("CylinderShape3D_bldwx")
+
+[node name="Sprite3D" type="Sprite3D" parent="destination2"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0287817, 0)
+texture = ExtResource("25_e8tgu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_8rvyt")
+
+[connection signal="pressed" from="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/Button_start" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="SimulationGroup/AspectRatioContainer/MarginContainer/VBoxContainer/NextButton" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="SimulationGroup/AspectRatioContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_retry_pressed"]
 [connection signal="timeout" from="spawner/Timer" to="spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="spawner2/Timer" to="spawner2" method="_on_timer_timeout"]
 [connection signal="body_entered" from="destination" to="destination" method="_on_body_entered"]
+[connection signal="body_entered" from="destination2" to="destination2" method="_on_body_entered"]

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_msobk"]
 [ext_resource type="Resource" uid="uid://b2kwwl5dwn5ug" path="res://resources/tiles/default.tres" id="2_unliq"]
 [ext_resource type="Resource" uid="uid://b8mr36t8w4gtv" path="res://resources/tiles/straight_road_tile.tres" id="3_mniv1"]
-[ext_resource type="Resource" path="res://resources/tiles/turn_road.tres" id="4_pgtnl"]
+[ext_resource type="Resource" uid="uid://c1g05b4om4kn1" path="res://resources/tiles/turn_road.tres" id="4_pgtnl"]
 [ext_resource type="PackedScene" uid="uid://cnrl6ho45qyn5" path="res://scenes/stage_2.tscn" id="5_r0st6"]
 [ext_resource type="Texture2D" uid="uid://bn2wfyeaqiteh" path="res://kenney_assets/kenney_isometric-roads/png/road.png" id="7_0r66u"]
 [ext_resource type="Texture2D" uid="uid://bybxtk57xxqxw" path="res://kenney_assets/kenney_isometric-roads/png/roadEW.png" id="8_br2pf"]
