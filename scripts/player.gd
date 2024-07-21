@@ -16,7 +16,6 @@ func _unhandled_input(_event):
 
 	if Input.is_action_just_pressed("place_tile"):
 		var grid_local = get_grid_placement()
-		var orientation_1 = grid.get_cell_item_orientation(grid_local)
 		if grid_local and grid.is_editable(grid_local):
 			var id = current_stage.get_tile_id()
 			var current_tile_id = grid.get_tile_id(grid_local)

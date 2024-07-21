@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bf2etelow26rw"]
+[gd_scene load_steps=25 format=3 uid="uid://cc7mo4obimm1y"]
 
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_nh7kn"]
 [ext_resource type="Resource" uid="uid://b2kwwl5dwn5ug" path="res://resources/tiles/default.tres" id="2_at5e1"]
@@ -38,10 +38,10 @@ sky = SubResource("Sky_tuk7v")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uun2t"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_scbsq"]
 texture = ExtResource("14_d7lf1")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gibkx"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_82cpo"]
 texture = ExtResource("9_lcm53")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bldwx"]
@@ -97,65 +97,90 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer"]
+[node name="CarsContainer" type="PanelContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="CanvasGroup/AspectRatioContainer/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-text = "Cars"
+text = "Incomming cars"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/PanelContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HFlowContainer" type="HFlowContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HFlowContainer" type="HFlowContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/h_separation = 5
 
-[node name="Panel" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+[node name="Panel" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_uun2t")
+theme_override_styles/panel = SubResource("StyleBoxTexture_scbsq")
 
-[node name="Panel2" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+[node name="Panel2" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_gibkx")
+theme_override_styles/panel = SubResource("StyleBoxTexture_82cpo")
 
-[node name="Panel3" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+[node name="Panel3" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_gibkx")
+theme_override_styles/panel = SubResource("StyleBoxTexture_82cpo")
 
-[node name="Panel4" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
+[node name="Panel4" type="Panel" parent="CanvasGroup/AspectRatioContainer/MarginContainer/CarsContainer/VBoxContainer/MarginContainer/VBoxContainer/HFlowContainer"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_gibkx")
+theme_override_styles/panel = SubResource("StyleBoxTexture_82cpo")
+
+[node name="MoneyContainer" type="PanelContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer/MoneyContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasGroup/AspectRatioContainer/MarginContainer/MoneyContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Cash"
+horizontal_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="CanvasGroup/AspectRatioContainer/MarginContainer/MoneyContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "1000 $"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup/AspectRatioContainer/MarginContainer"]
 layout_mode = 2
@@ -182,14 +207,18 @@ focus_mode = 0
 theme_override_constants/icon_max_width = 48
 toggle_mode = true
 button_pressed = true
+text = "200"
 icon = ExtResource("9_tmruo")
+icon_alignment = 1
 
 [node name="Button2" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/HFlowContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_constants/icon_max_width = 48
 toggle_mode = true
+text = "200"
 icon = ExtResource("10_dnw8o")
+icon_alignment = 1
 
 [node name="Button3" type="Button" parent="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/HFlowContainer"]
 layout_mode = 2
@@ -197,6 +226,7 @@ focus_mode = 0
 theme_override_constants/icon_max_width = 48
 toggle_mode = true
 icon = ExtResource("11_p8m47")
+icon_alignment = 1
 
 [node name="SimulationGroup" type="CanvasLayer" parent="."]
 visible = false
@@ -260,10 +290,6 @@ shape = SubResource("CylinderShape3D_bldwx")
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0287817, 0)
 texture = ExtResource("16_68u4k")
 
-[connection signal="pressed" from="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/HFlowContainer/Button" to="." method="set_active_tile" binds= [0]]
-[connection signal="pressed" from="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/HFlowContainer/Button2" to="." method="set_active_tile" binds= [1]]
-[connection signal="pressed" from="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/HFlowContainer/Button3" to="." method="set_active_tile" binds= [2]]
 [connection signal="pressed" from="SimulationGroup/AspectRatioContainer/MarginContainer/VBoxContainer/NextButton" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="SimulationGroup/AspectRatioContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_retry_pressed"]
 [connection signal="timeout" from="spawner/Timer" to="spawner" method="_on_timer_timeout"]

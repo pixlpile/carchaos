@@ -9,6 +9,7 @@ extends Node3D
 @onready var edit_group = $CanvasGroup
 @onready var simulation_group = $SimulationGroup
 @onready var next_button = %NextButton
+@onready var audio_player:AudioStreamPlayer = $AudioStreamPlayer
 
 var active_tile = 0
 var finished_cars = 0
@@ -61,6 +62,7 @@ func highlight_button(id):
 	
 	
 func finish_car():
+	audio_player.play()
 	finished_cars = finished_cars + 1
 	if finished_cars == cars_to_finish:
 		next_button.visible = true

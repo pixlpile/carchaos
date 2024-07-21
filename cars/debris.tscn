@@ -1,5 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvmld3td1v4ph"]
+[gd_scene load_steps=4 format=3 uid="uid://cto0jjnnyw3me"]
 
 [ext_resource type="PackedScene" uid="uid://bs7v1e6ebk7st" path="res://kenney_assets/kenney_car-kit/Models/GLB format/debris-drivetrain.glb" id="1_6x71o"]
+[ext_resource type="Script" path="res://cars/debris.gd" id="2_vrius"]
+[ext_resource type="AudioStream" uid="uid://dojpqchrso12e" path="res://audio/medium-explosion-40472.mp3" id="3_c5t7n"]
 
 [node name="Drivetrain" instance=ExtResource("1_6x71o")]
+script = ExtResource("2_vrius")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource("3_c5t7n")
+
+[node name="Timer" type="Timer" parent="." index="2"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cepqc3bjs83os" path="res://kenney_assets/kenney_car-kit/Models/GLB format/sedan.glb" id="1_f1w0m"]
 [ext_resource type="Script" path="res://scripts/vehicle.gd" id="2_xf1pq"]
-[ext_resource type="PackedScene" uid="uid://dvmld3td1v4ph" path="res://cars/debris.tscn" id="3_sv48f"]
+[ext_resource type="PackedScene" uid="uid://cto0jjnnyw3me" path="res://cars/debris.tscn" id="3_sv48f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tqp6y"]
 friction = 0.1

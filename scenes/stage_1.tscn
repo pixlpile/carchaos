@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b0r67xw1qypr4"]
+[gd_scene load_steps=25 format=3 uid="uid://b0r67xw1qypr4"]
 
 [ext_resource type="Script" path="res://scripts/GridHandler.gd" id="1_78tj7"]
 [ext_resource type="MeshLibrary" uid="uid://edivfulhihge" path="res://meshes/library_roads.tres" id="1_87dhb"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_msobk"]
 [ext_resource type="Resource" uid="uid://b2kwwl5dwn5ug" path="res://resources/tiles/default.tres" id="2_unliq"]
 [ext_resource type="Resource" uid="uid://b8mr36t8w4gtv" path="res://resources/tiles/straight_road_tile.tres" id="3_mniv1"]
-[ext_resource type="Resource" path="res://resources/tiles/turn_road.tres" id="4_pgtnl"]
+[ext_resource type="Resource" uid="uid://dnxvim4jjo2p2" path="res://resources/tiles/turn_road.tres" id="4_pgtnl"]
 [ext_resource type="PackedScene" uid="uid://cnrl6ho45qyn5" path="res://scenes/stage_2.tscn" id="5_r0st6"]
 [ext_resource type="Texture2D" uid="uid://bn2wfyeaqiteh" path="res://kenney_assets/kenney_isometric-roads/png/road.png" id="7_0r66u"]
 [ext_resource type="Texture2D" uid="uid://bybxtk57xxqxw" path="res://kenney_assets/kenney_isometric-roads/png/roadEW.png" id="8_br2pf"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://scripts/destination.gd" id="12_yui2b"]
 [ext_resource type="Texture2D" uid="uid://dbam4f863ogs1" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles red/tileRed_11.png" id="14_i2ikt"]
 [ext_resource type="Texture2D" uid="uid://bx0tkspnf84n0" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles red/tileRed_09.png" id="15_sxbrf"]
+[ext_resource type="AudioStream" uid="uid://dy7lox0bugfdw" path="res://audio/jingles_STEEL10.ogg" id="17_3ty7v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_63c6i"]
 sky_top_color = Color(0.25098, 0.333333, 0.894118, 1)
@@ -284,6 +285,9 @@ shape = SubResource("CylinderShape3D_bldwx")
 [node name="Sprite3D" type="Sprite3D" parent="destination"]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0287817, 0)
 texture = ExtResource("15_sxbrf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_3ty7v")
 
 [connection signal="pressed" from="CanvasGroup/AspectRatioContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="SimulationGroup/AspectRatioContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_retry_pressed"]
