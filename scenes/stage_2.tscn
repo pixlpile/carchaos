@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cnrl6ho45qyn5"]
+[gd_scene load_steps=23 format=3 uid="uid://cnrl6ho45qyn5"]
 
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_ue5sq"]
 [ext_resource type="Resource" uid="uid://b2kwwl5dwn5ug" path="res://resources/tiles/default.tres" id="2_s1j7l"]
@@ -9,9 +9,15 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="7_2rubs"]
 [ext_resource type="Texture2D" uid="uid://bn2wfyeaqiteh" path="res://kenney_assets/kenney_isometric-roads/png/road.png" id="8_5khan"]
 [ext_resource type="Texture2D" uid="uid://bybxtk57xxqxw" path="res://kenney_assets/kenney_isometric-roads/png/roadEW.png" id="9_cg35w"]
+[ext_resource type="Texture2D" uid="uid://bvkl4vl0vnax" path="res://kenney_assets/kenney_isometric-roads/png/crossroad.png" id="10_gw51j"]
 [ext_resource type="Script" path="res://scenes/red_spawner.gd" id="10_j8dkn"]
 [ext_resource type="PackedScene" uid="uid://ciypoloc1a8n1" path="res://cars/sedan.tscn" id="11_jjtgn"]
+[ext_resource type="PackedScene" uid="uid://qkpegcamvtgx" path="res://cars/taxi.tscn" id="12_c0g1n"]
 [ext_resource type="Script" path="res://scripts/destination.gd" id="12_wottn"]
+[ext_resource type="Texture2D" uid="uid://cicvka5v3kcwg" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles yellow/tileYellow_11.png" id="13_yah25"]
+[ext_resource type="Texture2D" uid="uid://dbam4f863ogs1" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles red/tileRed_11.png" id="15_5bkd6"]
+[ext_resource type="Texture2D" uid="uid://bx0tkspnf84n0" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles red/tileRed_09.png" id="17_3mgrf"]
+[ext_resource type="Texture2D" uid="uid://bmswsknqdsw5s" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles yellow/tileYellow_09.png" id="18_uckq8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_63c6i"]
 sky_top_color = Color(0.25098, 0.333333, 0.894118, 1)
@@ -49,7 +55,7 @@ cell_size = Vector3(1, 1, 1)
 cell_center_y = false
 bake_navigation = true
 data = {
-"cells": PackedInt32Array(65535, 65534, 1, 0, 65534, 1, 1, 65534, 1, 2, 65534, 1, 1, 65535, 1, 0, 65535, 1, 65535, 65535, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 2, 65535, 1, 65534, 65535, 1, 65534, 1, 655362, 65535, 1, 1, 0, 1, 1, 1, 1, 1, 2, 1, 3, 65535, 65533, 1, 0, 65533, 1, 1, 65533, 1, 2, 65533, 3, 65534, 65534, 1, 65534, 65533, 655362)
+"cells": PackedInt32Array(65535, 65534, 1, 0, 65534, 1, 1, 65534, 1, 2, 65534, 1, 1, 65535, 1, 0, 65535, 1, 65535, 65535, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 2, 65535, 1, 65534, 65535, 1, 65534, 1, 1, 65535, 1, 1, 0, 1, 1, 1, 1, 1, 2, 1, 1, 65535, 65533, 1, 0, 65533, 1, 1, 65533, 1, 2, 65533, 1, 65534, 65534, 1, 65534, 65533, 1, 65533, 65533, 655362, 65533, 1, 655362, 3, 1, 3, 3, 65533, 3)
 }
 script = ExtResource("6_k3w6i")
 
@@ -58,7 +64,7 @@ script = ExtResource("7_2rubs")
 money = 10000
 
 [node name="Camera3D" type="Camera3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.709, 8, -1.232)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.709, 8, 0.125724)
 projection = 1
 current = true
 size = 8.0
@@ -89,7 +95,7 @@ icon = ExtResource("9_cg35w")
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
-icon = ExtResource("9_cg35w")
+icon = ExtResource("10_gw51j")
 
 [node name="Button" type="Button" parent="CanvasGroup"]
 offset_left = 276.0
@@ -135,17 +141,21 @@ theme_override_font_sizes/font_size = 32
 text = "Retry"
 
 [node name="spawner" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -1.5, 0.2, -2.5)
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -2.35308, 0.2, -2.5)
 script = ExtResource("10_j8dkn")
-cars_to_spawn = Array[PackedScene]([ExtResource("11_jjtgn"), ExtResource("11_jjtgn"), ExtResource("11_jjtgn")])
+cars_to_spawn = Array[PackedScene]([ExtResource("12_c0g1n"), ExtResource("12_c0g1n"), ExtResource("12_c0g1n")])
 end_point = NodePath("../destination2")
 
 [node name="Timer" type="Timer" parent="spawner"]
 wait_time = 3.0
 one_shot = true
 
+[node name="Sprite3D" type="Sprite3D" parent="spawner"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.165318, 0)
+texture = ExtResource("13_yah25")
+
 [node name="spawner2" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -1.5, 0.2, 1.5)
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -2.34088, 0.2, 1.5)
 script = ExtResource("10_j8dkn")
 cars_to_spawn = Array[PackedScene]([ExtResource("11_jjtgn"), ExtResource("11_jjtgn"), ExtResource("11_jjtgn")])
 end_point = NodePath("../destination")
@@ -154,19 +164,31 @@ end_point = NodePath("../destination")
 wait_time = 3.0
 one_shot = true
 
+[node name="Sprite3D" type="Sprite3D" parent="spawner2"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, -0.165318, 0)
+texture = ExtResource("15_5bkd6")
+
 [node name="destination" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45123, 0, -2.5)
 script = ExtResource("12_wottn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="destination"]
 shape = SubResource("CylinderShape3D_bldwx")
 
+[node name="Sprite3D" type="Sprite3D" parent="destination"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0287817, 0)
+texture = ExtResource("17_3mgrf")
+
 [node name="destination2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43738, 0, 1.5)
 script = ExtResource("12_wottn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="destination2"]
 shape = SubResource("CylinderShape3D_bldwx")
+
+[node name="Sprite3D" type="Sprite3D" parent="destination2"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0287817, 0)
+texture = ExtResource("18_uckq8")
 
 [connection signal="pressed" from="CanvasGroup/HFlowContainer/Button" to="." method="set_active_tile" binds= [0]]
 [connection signal="pressed" from="CanvasGroup/HFlowContainer/Button2" to="." method="set_active_tile" binds= [1]]

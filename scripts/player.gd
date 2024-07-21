@@ -13,10 +13,17 @@ func _unhandled_input(_event):
 	if Input.is_action_just_pressed("place_tile"):
 		var grid_local = get_grid_placement()
 		if grid_local and grid.is_editable(grid_local):
+			var id = current_stage.get_tile_id()
 			var current_tile_id = grid.get_tile_id(grid_local)
 			var current_tile_cost = current_stage.get_tile_cost_by_id(current_tile_id)
-			if buy_tile(current_tile_cost):
-				var id = current_stage.get_tile_id()
+			if current_tile_id == id:
+				var orientation = grid.get_cell_item_orientation(grid_local)
+				var new_orientation = 0
+				
+				if orientation == 0:
+					new_orientation = 22
+				grid.set_cell_item(grid_local, id, new_orientation)
+			elif buy_tile(current_tile_cost):
 				grid.set_cell_item(grid_local, id)
 				print("money: " + str(money))
 
