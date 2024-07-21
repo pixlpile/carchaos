@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlvqivtu8cv88"]
+
+[ext_resource type="PackedScene" uid="uid://bggypb00fmwdo" path="res://kenney_assets/kenney_car-kit/Models/GLB format/van.glb" id="1_0kb8i"]
+[ext_resource type="PhysicsMaterial" uid="uid://bbt4n3g0i71eo" path="res://resources/vehicle_physics.tres" id="2_4dmbe"]
+[ext_resource type="Script" path="res://scripts/vehicle.gd" id="2_4ljyr"]
+[ext_resource type="PackedScene" uid="uid://dvmld3td1v4ph" path="res://cars/debris.tscn" id="3_j11h1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bomk5"]
+resource_local_to_scene = false
+resource_name = ""
+custom_solver_bias = 0.0
+margin = 0.04
+radius = 0.25
+height = 1.0
+
+[node name="Van" instance=ExtResource("1_0kb8i")]
+physics_material_override = ExtResource("2_4dmbe")
+can_sleep = false
+lock_rotation = true
+script = ExtResource("2_4ljyr")
+speed = 70.0
+explosion = ExtResource("3_j11h1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.231, 0)
+shape = SubResource("CapsuleShape3D_bomk5")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="6"]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
