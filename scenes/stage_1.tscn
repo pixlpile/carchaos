@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_msobk"]
 [ext_resource type="Resource" uid="uid://b2kwwl5dwn5ug" path="res://resources/tiles/default.tres" id="2_unliq"]
 [ext_resource type="Resource" uid="uid://b8mr36t8w4gtv" path="res://resources/tiles/straight_road_tile.tres" id="3_mniv1"]
-[ext_resource type="Resource" uid="uid://dnxvim4jjo2p2" path="res://resources/tiles/turn_road.tres" id="4_pgtnl"]
+[ext_resource type="Resource" path="res://resources/tiles/turn_road.tres" id="4_pgtnl"]
 [ext_resource type="PackedScene" uid="uid://cnrl6ho45qyn5" path="res://scenes/stage_2.tscn" id="5_r0st6"]
 [ext_resource type="Texture2D" uid="uid://bn2wfyeaqiteh" path="res://kenney_assets/kenney_isometric-roads/png/road.png" id="7_0r66u"]
 [ext_resource type="Texture2D" uid="uid://bybxtk57xxqxw" path="res://kenney_assets/kenney_isometric-roads/png/roadEW.png" id="8_br2pf"]
@@ -52,7 +52,7 @@ next_level = ExtResource("5_r0st6")
 environment = SubResource("Environment_rw2fi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(0.3021, 0.825562, -0.476636, 0, 0.499998, 0.866027, 0.953276, -0.261627, 0.15105, 0, 6.3581, 0)
 shadow_enabled = true
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -61,7 +61,7 @@ cell_size = Vector3(1, 1, 1)
 cell_center_y = false
 bake_navigation = true
 data = {
-"cells": PackedInt32Array(65534, 65534, 1441793, 65535, 65534, 1441793, 0, 65534, 655361, 2, 65534, 655361, 1, 65535, 655361, 0, 65535, 655361, 65535, 65535, 655361, 65534, 0, 655361, 65535, 0, 1, 0, 0, 1048577, 1, 0, 1441801, 2, 0, 1, 2, 65535, 655361, 65534, 65535, 655361, 65534, 1, 1, 65535, 1, 1, 0, 1, 1441801, 1, 1, 1048577, 2, 1, 1441801, 65534, 65533, 1441801, 65535, 65533, 1441801, 0, 65533, 655361, 65533, 65535, 655362, 3, 65533, 3, 2, 65533, 655361, 1, 65533, 655361, 1, 65534, 655361)
+"cells": PackedInt32Array(65534, 65534, 1441793, 65535, 65534, 1441793, 0, 65534, 655361, 2, 65534, 655361, 1, 65535, 655361, 0, 65535, 655361, 65535, 65535, 655361, 65534, 0, 655361, 65535, 0, 1, 0, 0, 1048577, 1, 0, 1441801, 2, 0, 1, 2, 65535, 655361, 65534, 65535, 655361, 65534, 1, 1, 65535, 1, 1, 0, 1, 1441801, 1, 1, 1048577, 2, 1, 1441801, 65534, 65533, 1441801, 65535, 65533, 1441801, 0, 65533, 655361, 65533, 65535, 655361, 3, 65533, 3, 2, 65533, 655361, 1, 65533, 655361, 1, 65534, 655361, 65533, 65533, 655361, 65533, 65534, 655361, 65533, 0, 655361, 65533, 1, 655361, 65532, 65533, 655361, 65532, 65534, 655361, 65532, 65535, 655361, 65532, 0, 655361, 65532, 1, 655361, 65531, 65535, 655362)
 }
 script = ExtResource("1_78tj7")
 
@@ -70,8 +70,7 @@ script = ExtResource("2_msobk")
 money = 10000
 
 [node name="Camera3D" type="Camera3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.709, 8, -0.0672474)
-projection = 1
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 6, 1.5)
 current = true
 size = 8.0
 
@@ -262,7 +261,7 @@ size_flags_vertical = 8
 text = "Retry"
 
 [node name="spawner" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -2.38728, 0.2, -0.5)
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -4.4478, 0.2, -0.5)
 script = ExtResource("10_o3wgt")
 cars_to_spawn = Array[PackedScene]([ExtResource("10_f2kik"), ExtResource("10_f2kik"), ExtResource("10_f2kik")])
 end_point = NodePath("../destination")
