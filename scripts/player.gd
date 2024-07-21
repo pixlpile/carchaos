@@ -12,21 +12,45 @@ func _unhandled_input(_event):
 
 	if Input.is_action_just_pressed("place_tile"):
 		var grid_local = get_grid_placement()
+		var orientation_1 = grid.get_cell_item_orientation(grid_local)
 		if grid_local and grid.is_editable(grid_local):
 			var id = current_stage.get_tile_id()
 			var current_tile_id = grid.get_tile_id(grid_local)
 			var current_tile_cost = current_stage.get_tile_cost_by_id(current_tile_id)
 			if current_tile_id == id:
 				var orientation = grid.get_cell_item_orientation(grid_local)
-				var new_orientation = 0
-				
-				if orientation == 0:
-					new_orientation = 22
+				var new_orientation = rotate_tile(id, orientation)
 				grid.set_cell_item(grid_local, id, new_orientation)
 			elif buy_tile(current_tile_cost):
 				grid.set_cell_item(grid_local, id)
 				print("money: " + str(money))
 
+func rotate_tile(tile_id, orientation):
+	var new_orientation = 0
+	if tile_id == 0:
+		if orientation == 0:
+			new_orientation = 22
+	elif tile_id == 6:
+		if orientation == 0:
+			new_orientation = 22
+		if orientation == 22:
+			new_orientation = 10
+		if orientation == 10:
+			new_orientation = 16
+		if orientation == 16:
+			new_orientation = 0
+			
+	elif tile_id == 7:
+		if orientation == 0:
+			new_orientation = 22
+		if orientation == 22:
+			new_orientation = 10
+		if orientation == 10:
+			new_orientation = 16
+		if orientation == 16:
+			new_orientation = 0
+	return new_orientation
+		
 
 func get_grid_placement():
 	var mouse_pos = get_viewport().get_mouse_position() 

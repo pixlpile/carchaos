@@ -24,6 +24,9 @@ func _unhandled_input(_event):
 	elif Input.is_action_just_pressed("selection_2"):
 		set_active_tile(1)
 		highlight_button(1)
+	elif Input.is_action_just_pressed("selection_3"):
+		set_active_tile(2)
+		highlight_button(2)
 		
 func get_cost():
 	return available_tiles[active_tile].cost

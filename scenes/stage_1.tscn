@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b0r67xw1qypr4"]
+[gd_scene load_steps=21 format=3 uid="uid://b0r67xw1qypr4"]
 
 [ext_resource type="Script" path="res://scripts/GridHandler.gd" id="1_78tj7"]
 [ext_resource type="MeshLibrary" uid="uid://edivfulhihge" path="res://meshes/library_roads.tres" id="1_87dhb"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_msobk"]
 [ext_resource type="Resource" uid="uid://b2kwwl5dwn5ug" path="res://resources/tiles/default.tres" id="2_unliq"]
 [ext_resource type="Resource" uid="uid://b8mr36t8w4gtv" path="res://resources/tiles/straight_road_tile.tres" id="3_mniv1"]
-[ext_resource type="Script" path="res://scripts/tile.gd" id="4_75g5j"]
+[ext_resource type="Resource" uid="uid://dnxvim4jjo2p2" path="res://resources/tiles/turn_road.tres" id="4_pgtnl"]
 [ext_resource type="PackedScene" uid="uid://cnrl6ho45qyn5" path="res://scenes/stage_2.tscn" id="5_r0st6"]
 [ext_resource type="Texture2D" uid="uid://bn2wfyeaqiteh" path="res://kenney_assets/kenney_isometric-roads/png/road.png" id="7_0r66u"]
 [ext_resource type="Texture2D" uid="uid://bybxtk57xxqxw" path="res://kenney_assets/kenney_isometric-roads/png/roadEW.png" id="8_br2pf"]
@@ -16,11 +16,6 @@
 [ext_resource type="Script" path="res://scripts/destination.gd" id="12_yui2b"]
 [ext_resource type="Texture2D" uid="uid://dbam4f863ogs1" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles red/tileRed_11.png" id="14_i2ikt"]
 [ext_resource type="Texture2D" uid="uid://bx0tkspnf84n0" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles red/tileRed_09.png" id="15_sxbrf"]
-
-[sub_resource type="Resource" id="Resource_qtna3"]
-script = ExtResource("4_75g5j")
-id = 6
-cost = 300
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_63c6i"]
 sky_top_color = Color(0.25098, 0.333333, 0.894118, 1)
@@ -42,7 +37,7 @@ radius = 0.1
 
 [node name="Stage1" type="Node3D"]
 script = ExtResource("1_r3wyl")
-available_tiles = Array[ExtResource("4_75g5j")]([ExtResource("2_unliq"), ExtResource("3_mniv1"), SubResource("Resource_qtna3")])
+available_tiles = Array[Resource("res://scripts/tile.gd")]([ExtResource("2_unliq"), ExtResource("3_mniv1"), ExtResource("4_pgtnl")])
 next_level = ExtResource("5_r0st6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -58,7 +53,7 @@ cell_size = Vector3(1, 1, 1)
 cell_center_y = false
 bake_navigation = true
 data = {
-"cells": PackedInt32Array(65534, 65534, 1, 65535, 65534, 1, 0, 65534, 1441793, 1, 65534, 1, 2, 65534, 1, 1, 65535, 1, 0, 65535, 1, 65535, 65535, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 2, 65535, 1, 65534, 65535, 1, 65534, 1, 1, 65535, 1, 1, 0, 1, 1, 1, 1, 1, 2, 1, 1, 65534, 65533, 1, 65535, 65533, 1, 0, 65533, 1, 1, 65533, 1, 2, 65533, 1, 65533, 65535, 655362, 3, 65533, 3)
+"cells": PackedInt32Array(65534, 65534, 1, 65535, 65534, 1, 0, 65534, 1441793, 1, 65534, 1, 2, 65534, 1, 1, 65535, 1, 0, 65535, 1, 65535, 65535, 1, 65534, 0, 655361, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 2, 65535, 1, 65534, 65535, 1, 65534, 1, 1, 65535, 1, 1, 0, 1, 1, 1, 1, 1, 2, 1, 1, 65534, 65533, 1441793, 65535, 65533, 1441793, 0, 65533, 1441793, 1, 65533, 1441793, 2, 65533, 1, 65533, 65535, 655362, 3, 65533, 3)
 }
 script = ExtResource("1_78tj7")
 
