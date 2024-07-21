@@ -1,11 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://dslyvcmecnld3"]
+[gd_scene load_steps=35 format=3 uid="uid://kn5t58lf2lbq"]
 
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_u1m87"]
 [ext_resource type="Resource" uid="uid://b2kwwl5dwn5ug" path="res://resources/tiles/default.tres" id="2_yp1gs"]
 [ext_resource type="Resource" uid="uid://dg6wi0yme6ho1" path="res://resources/tiles/road_t.tres" id="4_6ghd7"]
 [ext_resource type="Resource" uid="uid://b8mr36t8w4gtv" path="res://resources/tiles/straight_road_tile.tres" id="5_vurqv"]
 [ext_resource type="Resource" uid="uid://c1g05b4om4kn1" path="res://resources/tiles/turn_road.tres" id="6_5s8ln"]
-[ext_resource type="PackedScene" uid="uid://cnrl6ho45qyn5" path="res://scenes/stage_2.tscn" id="7_yx2ic"]
+[ext_resource type="PackedScene" uid="uid://1rt070yc6ge5" path="res://scenes/stage_5.tscn" id="6_8ist3"]
 [ext_resource type="MeshLibrary" uid="uid://edivfulhihge" path="res://meshes/library_roads.tres" id="8_7a5yq"]
 [ext_resource type="Script" path="res://scripts/GridHandler.gd" id="9_rk3vu"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="10_c63r8"]
@@ -65,7 +65,7 @@ radius = 0.1
 script = ExtResource("1_u1m87")
 available_tiles = Array[Resource("res://scripts/tile.gd")]([ExtResource("2_yp1gs"), ExtResource("4_6ghd7"), ExtResource("5_vurqv"), ExtResource("6_5s8ln")])
 cars_to_finish = 7
-next_level = ExtResource("7_yx2ic")
+next_level = ExtResource("6_8ist3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rw2fi")

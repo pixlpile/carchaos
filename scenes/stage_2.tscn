@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://jx3k716m5ppu" path="res://resources/tiles/crossroads_tile.tres" id="4_d4i8u"]
 [ext_resource type="MeshLibrary" uid="uid://edivfulhihge" path="res://meshes/library_roads.tres" id="5_ekcaj"]
 [ext_resource type="Resource" uid="uid://c1g05b4om4kn1" path="res://resources/tiles/turn_road.tres" id="5_n3uft"]
-[ext_resource type="PackedScene" uid="uid://cfrpjnn6vq2xv" path="res://scenes/stage_3.tscn" id="6_bl50y"]
+[ext_resource type="PackedScene" uid="uid://bf2etelow26rw" path="res://scenes/stage_3.tscn" id="6_1ey0p"]
 [ext_resource type="Script" path="res://scripts/GridHandler.gd" id="6_k3w6i"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="7_2rubs"]
 [ext_resource type="Texture2D" uid="uid://bn2wfyeaqiteh" path="res://kenney_assets/kenney_isometric-roads/png/road.png" id="8_5khan"]
@@ -65,7 +65,7 @@ radius = 0.1
 script = ExtResource("1_ue5sq")
 available_tiles = Array[Resource("res://scripts/tile.gd")]([ExtResource("2_s1j7l"), ExtResource("3_flqqc"), ExtResource("4_d4i8u"), ExtResource("5_n3uft")])
 cars_to_finish = 6
-next_level = ExtResource("6_bl50y")
+next_level = ExtResource("6_1ey0p")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rw2fi")
