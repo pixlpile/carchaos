@@ -3,8 +3,12 @@ extends Node3D
 @onready var grid = $"../GridMap"
 @onready var camera3d = $Camera3D
 @onready var current_stage = $".."
+@onready var money_label = %MoneyLabel
 
 @export var money: int = 1000
+
+func _ready():
+	money_label.text = str(money) + " €"
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("quit"):
@@ -23,6 +27,7 @@ func _unhandled_input(_event):
 				grid.set_cell_item(grid_local, id, new_orientation)
 			elif buy_tile(current_tile_cost):
 				grid.set_cell_item(grid_local, id)
+				money_label.text = str(money) + " €"
 				print("money: " + str(money))
 
 func rotate_tile(tile_id, orientation):

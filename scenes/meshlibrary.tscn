@@ -1,13 +1,13 @@
 [gd_scene load_steps=30 format=3 uid="uid://dvkq2r2t7xvpm"]
 
-[ext_resource type="ArrayMesh" uid="uid://bhnyytgq746ie" path="res://meshes/road_straight.res" id="1_t8ap0"]
+[ext_resource type="ArrayMesh" path="res://meshes/road_straight.res" id="1_t8ap0"]
 [ext_resource type="ArrayMesh" uid="uid://dn5s4v3fp0t3m" path="res://meshes/road_default.res" id="2_g7q4x"]
 [ext_resource type="ArrayMesh" uid="uid://bflegn0wina80" path="res://meshes/road_crossroad.res" id="2_yg6dw"]
 [ext_resource type="ArrayMesh" uid="uid://ds5c6ikkkeoeh" path="res://meshes/red_start.res" id="3_vx2gk"]
 [ext_resource type="ArrayMesh" uid="uid://b0uiqh5tvamla" path="res://meshes/red_end.res" id="4_l2yku"]
 [ext_resource type="Script" path="res://scenes/start_tile.gd" id="4_xgf77"]
-[ext_resource type="ArrayMesh" uid="uid://bd17vlopntl0m" path="res://meshes/road_turn.res" id="7_f5jyo"]
-[ext_resource type="ArrayMesh" uid="uid://cnvci3c45t17b" path="res://meshes/road_t.res" id="8_74aeb"]
+[ext_resource type="ArrayMesh" path="res://meshes/road_turn.res" id="7_f5jyo"]
+[ext_resource type="ArrayMesh" path="res://meshes/road_t.res" id="8_74aeb"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7uu27"]
 vertices = PackedVector3Array(-0.5, 0.03, -0.025, -0.5, 0.03, 0.025, 0.5, 0.03, 0.025, 0.5, 0.03, -0.025)

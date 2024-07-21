@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bvkl4vl0vnax" path="res://kenney_assets/kenney_isometric-roads/png/crossroad.png" id="10_gw51j"]
 [ext_resource type="Script" path="res://scenes/red_spawner.gd" id="10_j8dkn"]
 [ext_resource type="PackedScene" uid="uid://ciypoloc1a8n1" path="res://cars/sedan.tscn" id="11_jjtgn"]
-[ext_resource type="PackedScene" uid="uid://qkpegcamvtgx" path="res://cars/taxi.tscn" id="12_c0g1n"]
+[ext_resource type="PackedScene" path="res://cars/taxi.tscn" id="12_c0g1n"]
 [ext_resource type="Script" path="res://scripts/destination.gd" id="12_wottn"]
 [ext_resource type="Texture2D" uid="uid://cicvka5v3kcwg" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles yellow/tileYellow_11.png" id="13_yah25"]
 [ext_resource type="Texture2D" uid="uid://dbam4f863ogs1" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles red/tileRed_11.png" id="15_5bkd6"]

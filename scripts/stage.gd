@@ -5,10 +5,10 @@ extends Node3D
 @export var cars_to_finish = 3
 @export var next_level: PackedScene
 
-@onready var buttons_container = $CanvasGroup/HFlowContainer
+@onready var buttons_container = %HFlowContainer
 @onready var edit_group = $CanvasGroup
 @onready var simulation_group = $SimulationGroup
-@onready var next_button = $SimulationGroup/NextButton
+@onready var next_button = %NextButton
 
 var active_tile = 0
 var finished_cars = 0
@@ -16,6 +16,15 @@ var finished_cars = 0
 func _ready():
 	edit_group.visible = true
 	simulation_group.visible = false
+	var buttons = buttons_container.get_children()
+	var index = 0
+	for button:Button in buttons:
+		button.pressed.connect(set_active_tile.bind(index))
+		if available_tiles[index].cost == 0:
+			button.text = "€"
+		else:
+			button.text = str(available_tiles[index].cost)
+		index += 1
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("selection_1"):
