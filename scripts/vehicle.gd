@@ -14,6 +14,7 @@ var have_set_target = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("vehicle")
 	direction = (global_transform.basis * Vector3.FORWARD)
 
 
@@ -48,7 +49,11 @@ func _physics_process(delta):
 	apply_force(direction * speed * delta)
 		
 	if not navigation.is_target_reachable():
-		print("Can't reach target")
+		speed = 0
+
+
+func stop_simulation():
+	queue_free()
 
 
 func _on_body_entered(body):

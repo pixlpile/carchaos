@@ -5,6 +5,9 @@ extends Node3D
 @onready var timer: Timer = $Timer
 var index = 0
 
+func _ready():
+	add_to_group("spawner")
+
 func start_simulation():
 	index = 0
 	spawn_car()
@@ -27,3 +30,7 @@ func spawn_car():
 
 func _on_timer_timeout():
 	spawn_car()
+
+
+func stop_simulation():
+	timer.stop()
