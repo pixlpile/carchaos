@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://fujhe6auja73"]
+[gd_scene load_steps=12 format=3 uid="uid://fujhe6auja73"]
 
-[ext_resource type="PackedScene" uid="uid://ciypoloc1a8n1" path="res://cars/sedan.tscn" id="1_aacoc"]
 [ext_resource type="Material" uid="uid://cmxpaip16ufed" path="res://scenes/box_material.tres" id="1_x6q64"]
 [ext_resource type="Script" path="res://scenes/red_spawner.gd" id="2_waa2m"]
 
@@ -95,7 +94,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2, 7, 
 [node name="Spawner" type="Node3D" parent="." node_paths=PackedStringArray("end_point")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3.64839)
 script = ExtResource("2_waa2m")
-obj_path = ExtResource("1_aacoc")
 end_point = NodePath("../Target")
 
 [node name="Timer" type="Timer" parent="."]
