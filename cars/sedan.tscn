@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cepqc3bjs83os" path="res://kenney_assets/kenney_car-kit/Models/GLB format/sedan.glb" id="1_f1w0m"]
 [ext_resource type="Script" path="res://scripts/vehicle.gd" id="2_xf1pq"]
-[ext_resource type="PackedScene" uid="uid://bs7v1e6ebk7st" path="res://kenney_assets/kenney_car-kit/Models/GLB format/debris-drivetrain.glb" id="3_sy7kp"]
+[ext_resource type="PackedScene" uid="uid://dvmld3td1v4ph" path="res://cars/debris.tscn" id="3_sv48f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tqp6y"]
 friction = 0.1
@@ -21,7 +21,7 @@ max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("2_xf1pq")
 speed = 100.0
-explosion = ExtResource("3_sy7kp")
+explosion = ExtResource("3_sv48f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.230767, 0)
