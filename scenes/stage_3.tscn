@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://c1g05b4om4kn1" path="res://resources/tiles/turn_road.tres" id="4_47wfd"]
 [ext_resource type="Resource" uid="uid://dg6wi0yme6ho1" path="res://resources/tiles/road_t.tres" id="4_npj7u"]
 [ext_resource type="MeshLibrary" uid="uid://edivfulhihge" path="res://meshes/library_roads.tres" id="6_7lp8f"]
-[ext_resource type="PackedScene" path="res://scenes/stage_4.tscn" id="7_2ul8r"]
+[ext_resource type="PackedScene" uid="uid://kn5t58lf2lbq" path="res://scenes/stage_4.tscn" id="7_2ul8r"]
 [ext_resource type="Script" path="res://scripts/GridHandler.gd" id="7_36due"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="8_hmdfy"]
 [ext_resource type="Texture2D" uid="uid://chqiek4cyhjoq" path="res://kenney_assets/kenney_pixel-vehicle-pack/PNG/Cars/suv.png" id="9_lcm53"]
@@ -24,7 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://dy7lox0bugfdw" path="res://audio/jingles_STEEL10.ogg" id="18_8rvyt"]
 [ext_resource type="Texture2D" uid="uid://bvkl4vl0vnax" path="res://kenney_assets/kenney_isometric-roads/png/crossroad.png" id="18_v200p"]
 [ext_resource type="Texture2D" uid="uid://l7ooaesneebo" path="res://kenney_assets/kenney_isometric-roads/png/crossroadESW.png" id="19_0ipi2"]
-[ext_resource type="PackedScene" uid="uid://yhddn1og05hs" path="res://cars/sports.tscn" id="22_5a648"]
+[ext_resource type="PackedScene" uid="uid://dlvqivtu8cv88" path="res://cars/van.tscn" id="22_im56g"]
 [ext_resource type="Texture2D" uid="uid://btyddlby6lt1q" path="res://kenney_assets/kenney_puzzle-pack-2/PNG/Tiles blue/tileBlue_09.png" id="25_e8tgu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_63c6i"]
@@ -88,7 +88,7 @@ script = ExtResource("7_36due")
 
 [node name="player" type="Node3D" parent="."]
 script = ExtResource("8_hmdfy")
-money = 10000
+money = 7000
 
 [node name="Camera3D" type="Camera3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 6, 1.5)
@@ -347,7 +347,7 @@ texture = ExtResource("14_d7lf1")
 [node name="spawner2" type="Node3D" parent="." node_paths=PackedStringArray("end_point") groups=["spawner"]]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -4.5, 0.2, -1.5)
 script = ExtResource("12_yqfu0")
-cars_to_spawn = Array[PackedScene]([ExtResource("22_5a648"), ExtResource("22_5a648"), ExtResource("22_5a648")])
+cars_to_spawn = Array[PackedScene]([ExtResource("22_im56g"), ExtResource("22_im56g"), ExtResource("22_im56g")])
 end_point = NodePath("../destination2")
 
 [node name="Timer" type="Timer" parent="spawner2"]

@@ -86,7 +86,7 @@ script = ExtResource("6_k3w6i")
 
 [node name="player" type="Node3D" parent="."]
 script = ExtResource("7_2rubs")
-money = 7000
+money = 6000
 
 [node name="Camera3D" type="Camera3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 6, 1.5)
